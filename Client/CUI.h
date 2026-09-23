@@ -1,17 +1,17 @@
-#pragma once
+ï»¿#pragma once
 #include "CObject.h"
 class CUI :
     public CObject
 {
 private:
     vector<CUI*>    m_vecChildUI;
-    CUI*            m_pParentUI;//ÀÚ½ÅÀÇ ºÎ¸ğUI¸¦ °¡¸®Å°´Â º¯¼ö.
+    CUI*            m_pParentUI;//ìì‹ ì˜ ë¶€ëª¨UIë¥¼ ê°€ë¦¬í‚¤ëŠ” ë³€ìˆ˜.
 
     Vec2            m_vFinalPos;
 
-    bool            m_bCamAffected; //UI°¡ Ä«¸Ş¶ó¿¡ ¿µÇâÀ» ¹Ş´ÂÁö¿¡ ´ëÇØ
-    bool            m_bMouseOn;     //UIÀ§¿¡ ¸¶¿ì½º°¡ ÀÖ´ÂÁö
-    bool            m_bLbtnDown;    //UI¿¡ ¿ŞÂÊ ¹öÆ°ÀÌ ´­¸°ÀûÀÖ´ÂÁö
+    bool            m_bCamAffected; //UIê°€ ì¹´ë©”ë¼ì— ì˜í–¥ì„ ë°›ëŠ”ì§€ì— ëŒ€í•´
+    bool            m_bMouseOn;     //UIìœ„ì— ë§ˆìš°ìŠ¤ê°€ ìˆëŠ”ì§€
+    bool            m_bLbtnDown;    //UIì— ì™¼ìª½ ë²„íŠ¼ì´ ëˆŒë¦°ì ìˆëŠ”ì§€
 
 public:
     Vec2 GetFinalPos() { return m_vFinalPos; }
@@ -35,11 +35,11 @@ private:
     void MouseOnCheck();
 
 public:
-    virtual void MouseOn();             //UIÀ§¿¡ ¸¶¿ì½º°¡ ¿Ã¶ó°¬À»¶§
+    virtual void MouseOn();             //UIìœ„ì— ë§ˆìš°ìŠ¤ê°€ ì˜¬ë¼ê°”ì„ë•Œ
 
-    virtual void MouseLbtnDown();       //ÇØ´ç UI¿¡¼­ ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À»¶§ È£ÃâµÉ ÇÔ¼ö
-    virtual void MouseLbtnUp();         //ÇØ´ç UI¿¡¼­ ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°ÀÌ ¶¼Á³À»¶§ È£ÃâµÉ ÇÔ¼ö
-    virtual void MouseLbtnClicked();    //ÇØ´ç UI¿¡¼­ ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» Å¬¸¯ÇßÀ»¶§ È£ÃâµÉ ÇÔ¼ö
+    virtual void MouseLbtnDown();       //í•´ë‹¹ UIì—ì„œ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ í˜¸ì¶œë  í•¨ìˆ˜
+    virtual void MouseLbtnUp();         //í•´ë‹¹ UIì—ì„œ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì´ ë–¼ì¡Œì„ë•Œ í˜¸ì¶œë  í•¨ìˆ˜
+    virtual void MouseLbtnClicked();    //í•´ë‹¹ UIì—ì„œ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ í´ë¦­í–ˆì„ë•Œ í˜¸ì¶œë  í•¨ìˆ˜
 
     virtual CUI* Clone() PURE;
 

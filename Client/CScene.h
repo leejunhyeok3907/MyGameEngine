@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CMonFactory.h"
 
-//Àü¹æ¼±¾ð
-//ÄÄÆÄÀÏ ¼Óµµ¿¡ ¿µÇâÀ» ÁÖÁö¾Ê±âÀ§ÇØ Çì´õ¸¦ ÂüÁ¶ÇÏÁö¾ÊÀ½.
-//ÀÌ¿¡ ´ëÇÑ ³»¿ëÀ» ÂüÁ¶ÇÒ ¼ö ¾ø±â¶§¹®¿¡ Æ÷ÀÎÅÍÅ¸ÀÔÀ¸·Î¸¸ »ç¿ë°¡´ÉÇÔ.
+//ì „ë°©ì„ ì–¸
+//ì»´íŒŒì¼ ì†ë„ì— ì˜í–¥ì„ ì£¼ì§€ì•Šê¸°ìœ„í•´ í—¤ë”ë¥¼ ì°¸ì¡°í•˜ì§€ì•ŠìŒ.
+//ì´ì— ëŒ€í•œ ë‚´ìš©ì„ ì°¸ì¡°í•  ìˆ˜ ì—†ê¸°ë•Œë¬¸ì— í¬ì¸í„°íƒ€ìž…ìœ¼ë¡œë§Œ ì‚¬ìš©ê°€ëŠ¥í•¨.
 class CObject;
 
 class CScene
 {
 private:
-	//¿ÀºêÁ§Æ®¸¦ ÀúÀå ¹× °ü¸®ÇÒ º¤ÅÍ¸¦ ±×·ì°³¼ö¸¸Å­ ¼±¾ð
+	//ì˜¤ë¸Œì íŠ¸ë¥¼ ì €ìž¥ ë° ê´€ë¦¬í•  ë²¡í„°ë¥¼ ê·¸ë£¹ê°œìˆ˜ë§Œí¼ ì„ ì–¸
 	vector<CObject*>	m_arrObj[(UINT)GROUP_TYPE::END];
 	wstring				m_strName;
 
-	UINT				m_iTileX;	//Å¸ÀÏ °¡·Î °³¼ö
-	UINT				m_iTileY;	//Å¸ÀÏ ¼¼·Î °³¼ö
+	UINT				m_iTileX;	//íƒ€ì¼ ê°€ë¡œ ê°œìˆ˜
+	UINT				m_iTileY;	//íƒ€ì¼ ì„¸ë¡œ ê°œìˆ˜
 
-	CObject*			m_pPlayer;  // Player°´Ã¼
+	CObject*			m_pPlayer;  // Playerê°ì²´
 
 public:
 	void SetName(const wstring& _strName) { m_strName = _strName; }
@@ -33,13 +33,13 @@ public:
 	virtual void finalupdate();
 	virtual void render(HDC _dc);
 
-	//¼ø¼ö °¡»óÇÔ¼ö
-	//°´Ã¼¸¦ »ý¼ºÇÒ¼ö ¾ø´Â Ãß»óÅ¬·¡½º°¡ µÊ.
-	virtual void Enter() PURE;//ÇØ´ç Scene¿¡ ÁøÀÔ½Ã È£Ãâ
-	virtual void Exit() PURE;//ÇØ´ç SceneÀÇ Å»Ãâ½Ã È£Ãâ
+	//ìˆœìˆ˜ ê°€ìƒí•¨ìˆ˜
+	//ê°ì²´ë¥¼ ìƒì„±í• ìˆ˜ ì—†ëŠ” ì¶”ìƒí´ëž˜ìŠ¤ê°€ ë¨.
+	virtual void Enter() PURE;//í•´ë‹¹ Sceneì— ì§„ìž…ì‹œ í˜¸ì¶œ
+	virtual void Exit() PURE;//í•´ë‹¹ Sceneì˜ íƒˆì¶œì‹œ í˜¸ì¶œ
 
 public:
-	//ÇÔ¼ö¸¦ Çì´õ¿¡ ±¸ÇöÇÏ¸é ÀÎ¶óÀÎÃ³¸®µÇ¾î È£ÃâµÇ¾îµµ ÇØ´ç ½ºÅÃ¿¡¼­ Ã³¸®ÇÑ´Ù. (ÇÔ¼ö È£Ãâºñ¿ë ¾øÀ½)
+	//í•¨ìˆ˜ë¥¼ í—¤ë”ì— êµ¬í˜„í•˜ë©´ ì¸ë¼ì¸ì²˜ë¦¬ë˜ì–´ í˜¸ì¶œë˜ì–´ë„ í•´ë‹¹ ìŠ¤íƒì—ì„œ ì²˜ë¦¬í•œë‹¤. (í•¨ìˆ˜ í˜¸ì¶œë¹„ìš© ì—†ìŒ)
 	void AddObject(CObject* _pObj, GROUP_TYPE _eType)
 	{
 		m_arrObj[(UINT)_eType].push_back(_pObj);

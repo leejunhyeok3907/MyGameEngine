@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CScene.h"
 class CScene_Start :
     public CScene
@@ -11,7 +11,7 @@ private:
     bool    m_bUseForce;
 
 public:
-    //ºÙÀÌÁö¾Ê¾Æµµ °¡»óÇÔ¼ö·Î ÀÎ½ÄµÇÁö¸¸ ¸í½ÃÀûÀ¸·Î Àû¾îÁÜ.
+    //ë¶™ì´ì§€ì•Šì•„ë„ ê°€ìƒí•¨ìˆ˜ë¡œ ì¸ì‹ë˜ì§€ë§Œ ëª…ì‹œì ìœ¼ë¡œ ì ì–´ì¤Œ.
     virtual void update();
     virtual void render(HDC _dc);
     virtual void Enter();

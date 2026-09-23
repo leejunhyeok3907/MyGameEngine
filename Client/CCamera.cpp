@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CCamera.h"
 #include "CObject.h"
 #include "CCore.h"
@@ -60,7 +60,7 @@ void CCamera::update()
 		m_vLookAt.x += 500.f * fDT;
 	}
 
-	//È­¸é Áß¾Ó ÁÂÇ¥¿Í Ä«¸Ş¶ó LookAt ÁÂÇ¥°£ÀÇ Â÷ÀÌ°ª °è»ê
+	//í™”ë©´ ì¤‘ì•™ ì¢Œí‘œì™€ ì¹´ë©”ë¼ LookAt ì¢Œí‘œê°„ì˜ ì°¨ì´ê°’ ê³„ì‚°
 	CalDiff();
 }
 
@@ -68,11 +68,11 @@ void CCamera::render(HDC _dc)
 {
 	if (m_listCamEffect.empty()) return;
 
-	//½Ã°£ ´©Àû
+	//ì‹œê°„ ëˆ„ì 
 	tCamEffect& effect = m_listCamEffect.front();
 	effect.fCurTime += fDT;
 
-	float fRatio = 0.f;//ÀÌÆåÆ® ÁøÇà ºñÀ²
+	float fRatio = 0.f;//ì´í™íŠ¸ ì§„í–‰ ë¹„ìœ¨
 	fRatio = effect.fCurTime / effect.fDuration;
 
 	if (fRatio < 0.f)
@@ -106,17 +106,17 @@ void CCamera::render(HDC _dc)
 		, m_pVeilTex->GetWidth()
 		, m_pVeilTex->GetHeight(), bf);
 
-	//ÁøÇà ½Ã°£ÀÌ ÀÌÆåÆ® ÁöÁ¤ ½Ã°£À» ³Ñ¾î¼± °æ¿ì
+	//ì§„í–‰ ì‹œê°„ì´ ì´í™íŠ¸ ì§€ì • ì‹œê°„ì„ ë„˜ì–´ì„  ê²½ìš°
 	if (effect.fDuration < effect.fCurTime)
 	{
-		//È¿°ú Á¾·á
+		//íš¨ê³¼ ì¢…ë£Œ
 		m_listCamEffect.pop_front();
 	}
 }
 
 void CCamera::CalDiff()
 {
-	//ÀÌÀü LookAt°ú ÇöÀç LookÀÇ Â÷ÀÌ°ªÀ» º¸Á¤ÇØ¼­ ÇöÀçÀÇ LookAtÀ» ±¸ÇÑ´Ù.
+	//ì´ì „ LookAtê³¼ í˜„ì¬ Lookì˜ ì°¨ì´ê°’ì„ ë³´ì •í•´ì„œ í˜„ì¬ì˜ LookAtì„ êµ¬í•œë‹¤.
 
 	m_fAccTime += fDT;
 

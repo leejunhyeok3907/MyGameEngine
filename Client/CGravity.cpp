@@ -1,4 +1,4 @@
-#include "CGravity.h"
+ï»¿#include "CGravity.h"
 
 #include "CObject.h"
 #include "CRigidBody.h"
@@ -22,7 +22,7 @@ void CGravity::SetGround(bool _b)
 	{
 		Vec2 vV = m_pOwner->GetRigidBody()->GetVelocity();
 
-		//±âÁ¸ yÃà °ü·Ã ¼Óµµ Á¦°Å
+		//ê¸°ì¡´ yì¶• ê´€ë ¨ ì†ë„ ì œê±°
 		m_pOwner->GetRigidBody()->SetVelocity(Vec2(vV.x, 0.f));
 	}
 }

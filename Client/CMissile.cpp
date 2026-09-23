@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CMissile.h"
 #include "CTimeManager.h"
 #include "CCollider.h"
@@ -10,8 +10,8 @@ void CMissile::update()
 	//vPos.x += 200.f * cosf(m_fTheta) * fDT;
 	//vPos.y -= 200.f * sinf(m_fTheta) * fDT;
 
-	//º¤ÅÍ¸¦ ÀÌ¿ëÇÏ¸é ÁøÇà¹æÇâ³¢¸®ÀÇ µ¡¼À°ú »¬¼ÀÀÌ °¡´ÉÇÔ.
-	//Á÷°üÀûÀ¸·Î ¹æÇâÁ¤º¸¸¦ ´Ù·ç±â À§ÇØ »ç¿ë
+	//ë²¡í„°ë¥¼ ì´ìš©í•˜ë©´ ì§„í–‰ë°©í–¥ë¼ë¦¬ì˜ ë§ì…ˆê³¼ ëº„ì…ˆì´ ê°€ëŠ¥í•¨.
+	//ì§ê´€ì ìœ¼ë¡œ ë°©í–¥ì •ë³´ë¥¼ ë‹¤ë£¨ê¸° ìœ„í•´ ì‚¬ìš©
 	vPos.x += 200.f * m_vDir.x * fDT;
 	vPos.y += 200.f * m_vDir.y * fDT;
 

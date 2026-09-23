@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CTimeManager.h"
 #include "CCore.h"
 
@@ -21,10 +21,10 @@ CTimeManager::~CTimeManager()
 
 void CTimeManager::init()
 {
-	//ÇöÀç Ä«¿îÆ®
+	//í˜„ì¬ ì¹´ìš´íŠ¸
 	QueryPerformanceCounter(&m_llPrevCount);
 
-	//ÃÊ´ç Ä«¿îÆ® È½¼ö
+	//ì´ˆë‹¹ ì¹´ìš´íŠ¸ íšŸìˆ˜
 	QueryPerformanceFrequency(&m_llFrequency);
 }
 
@@ -32,10 +32,10 @@ void CTimeManager::update()
 {
 	QueryPerformanceCounter(&m_llCurCount);
 
-	//ÀÌÀü ÇÁ·¹ÀÓÀÇ Ä«¿îÆÃ°ú ÇöÀç ÇÁ·¹ÀÓÀÇ Ä«¿îÆÃ °ªÀÇ Â÷ÀÌ¸¦ ±¸ÇÑ´Ù.
+	//ì´ì „ í”„ë ˆì„ì˜ ì¹´ìš´íŒ…ê³¼ í˜„ì¬ í”„ë ˆì„ì˜ ì¹´ìš´íŒ… ê°’ì˜ ì°¨ì´ë¥¼ êµ¬í•œë‹¤.
 	m_dDeltaTime=(double)(m_llCurCount.QuadPart - m_llPrevCount.QuadPart)/(double)m_llFrequency.QuadPart;
 
-	//ÀÌÀü Ä«¿îÆ® °ªÀ» ÇöÀç°ªÀ¸·Î °»½Å
+	//ì´ì „ ì¹´ìš´íŠ¸ ê°’ì„ í˜„ì¬ê°’ìœ¼ë¡œ ê°±ì‹ 
 	m_llPrevCount = m_llCurCount;
 
 #ifdef _DEBUG

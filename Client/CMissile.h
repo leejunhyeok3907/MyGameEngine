@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include "CObject.h"
 class CMissile :
     public CObject
 {
 private:
-    float   m_fTheta;//À§ ¾Æ·¡ ¹æÇâ
+    float   m_fTheta;//ìœ„ ì•„ëž˜ ë°©í–¥
 
     Vec2    m_vDir;
 

@@ -1,13 +1,13 @@
-#pragma once
+ï»¿#pragma once
 #include "CObject.h"
 
 struct tMonInfo
 {
-    float fHP;              //Ã¼·Â
-    float fSpeed;           //¼Óµµ
-    float fRecogRange;      //ÀÎÁö ¹üÀ§
-    float fAttRange;        //°ø°İ ¹üÀ§
-    float fAtt;             //°ø°İ·Â
+    float fHP;              //ì²´ë ¥
+    float fSpeed;           //ì†ë„
+    float fRecogRange;      //ì¸ì§€ ë²”ìœ„
+    float fAttRange;        //ê³µê²© ë²”ìœ„
+    float fAtt;             //ê³µê²©ë ¥
 };
 
 class AI;

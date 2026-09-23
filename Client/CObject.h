@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "pch.h"
 #include "CCamera.h"
@@ -50,11 +50,11 @@ public:
 	virtual void OnCollisionExit(CCollider* _pOther) {}
 
 private:
-	//¿ÀÁ÷ EventManager¿¡¼­¸¸ ¿ÀºêÁ§Æ®ÀÇ »óÅÂ¸¦ ¹Ù²Ü¼öÀÖ°Ô private·Î ³õ¾ÆµÒ.
+	//ì˜¤ì§ EventManagerì—ì„œë§Œ ì˜¤ë¸Œì íŠ¸ì˜ ìƒíƒœë¥¼ ë°”ê¿€ìˆ˜ìˆê²Œ privateë¡œ ë†“ì•„ë‘ .
 	void SetDead() { m_bAlive = false; }
 
 public:
-	virtual void init() {};//SceneÀÌ ½ÃÀÛµÇ±â Á÷Àü¿¡ È£ÃâµÇ´Â ÇÔ¼ö
+	virtual void init() {};//Sceneì´ ì‹œì‘ë˜ê¸° ì§ì „ì— í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
 	virtual void update() PURE;
 	virtual void finalupdate();
 	virtual void render(HDC _dc);

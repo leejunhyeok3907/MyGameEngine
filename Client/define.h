@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 
-//½Ì±ÛÅæ ¸ÅÅ©·Î
+//ì‹±ê¸€í†¤ ë§¤í¬ë¡œ
 #define SINGLE(type) \
 public:\
 static type* GetInst() \
@@ -24,10 +24,10 @@ type();\
 #define KEY_NONE(key) KEY_CHECK(key, KEY_STATE::NONE)
 #define MOUSE_POS CKeyManager::GetInst()->GetMousePos()
 
-//2ÀÇ n½Â¼ö·Î Àß¸®´Â ¼ýÀÚ¸¦ »ç¿ëÇÏ´Â°ÍÀÌ GPUÃÖÀûÈ­¿¡ À¯¸®ÇÔ
+//2ì˜ nìŠ¹ìˆ˜ë¡œ ìž˜ë¦¬ëŠ” ìˆ«ìžë¥¼ ì‚¬ìš©í•˜ëŠ”ê²ƒì´ GPUìµœì í™”ì— ìœ ë¦¬í•¨
 #define TILE_SIZE 64
 
-//Scene¾È¿¡ ÀÖ´Â ¿ÀºêÁ§Æ®µéÀ» ºÐ·ù
+//Sceneì•ˆì— ìžˆëŠ” ì˜¤ë¸Œì íŠ¸ë“¤ì„ ë¶„ë¥˜
 enum class GROUP_TYPE
 {
 	DEFAULT,

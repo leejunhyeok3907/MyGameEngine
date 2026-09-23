@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CScene_Tool.h"
 #include "CSceneManager.h"
 #include "CKeyManager.h"
@@ -45,10 +45,10 @@ void CScene_Tool::update()
 
 void CScene_Tool::Enter()
 {
-	//Åø Scene¿¡¼­ »ç¿ëÇÒ ¸Ş´º ºÎÂø
+	//íˆ´ Sceneì—ì„œ ì‚¬ìš©í•  ë©”ë‰´ ë¶€ì°©
 	CCore::GetInst()->DockMenu();
 
-	//Å¸ÀÏ »ı¼º
+	//íƒ€ì¼ ìƒì„±
 	CreateTile(5, 5);
 
 	Vec2 vResolution = CCore::GetInst()->GetResolution();
@@ -62,14 +62,14 @@ void CScene_Tool::Enter()
 	pBtnUI->SetName(L"ChildUI");
 	pBtnUI->SetScale(Vec2(100.f, 40.f));
 	pBtnUI->SetPos(Vec2(0.f, 0.f));
-	//¸É¹öÇÔ¼öÆ÷ÀÎÅÍÀÇ °æ¿ì ÁÖ¼ÒÇ¥½Ã(&)¸¦ ¹İµå½Ã ºÙ¿©ÁÖ¾î¾ßÇÔ
-	//ºÎ¸ğ°´Ã¼¸¦ ÀÌ¿ëÇØ ÇÔ¼ö¸¦ È£Ãâ½ÃÅ³°æ¿ì Ä³½ºÆÃ ÇØÁà¾ßÇÔ
+	//ë§´ë²„í•¨ìˆ˜í¬ì¸í„°ì˜ ê²½ìš° ì£¼ì†Œí‘œì‹œ(&)ë¥¼ ë°˜ë“œì‹œ ë¶™ì—¬ì£¼ì–´ì•¼í•¨
+	//ë¶€ëª¨ê°ì²´ë¥¼ ì´ìš©í•´ í•¨ìˆ˜ë¥¼ í˜¸ì¶œì‹œí‚¬ê²½ìš° ìºìŠ¤íŒ… í•´ì¤˜ì•¼í•¨
 	((CButtonUI*)pBtnUI)->SetClickedCallBack(this, (SCENE_MEMFUNC)&CScene_Tool::SaveTileData);
 	pPanelUI->AddChild(pBtnUI);
 
 	AddObject(pPanelUI, GROUP_TYPE::UI);
 
-	//º¹»çº» UI
+	//ë³µì‚¬ë³¸ UI
 	//CUI* pClonePanel = pPanelUI->Clone();
 	//pClonePanel->SetPos(pClonePanel->GetPos() + Vec2(-100.f, 0.f));
 	//((CButtonUI*)pClonePanel->GetChildUI()[0])->SetClickedCallBack(ChangeScene, 0, 0);
@@ -77,15 +77,15 @@ void CScene_Tool::Enter()
 
 	//m_pUI = pClonePanel;
 
-	//Camera Look ÁöÁ¤
+	//Camera Look ì§€ì •
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
 
-	//Camera È¿°ú ÁöÁ¤
+	//Camera íš¨ê³¼ ì§€ì •
 	CCamera::GetInst()->FadeOut(1.f);
 	CCamera::GetInst()->FadeIn(1.f);
 }
 
-//ÀÎÀÚ°¡ ÀÇ¹Ì°¡ ¾ø´Â ÇÔ¼ö´Â ÇüÅÂ¸¸ ¸ÂÃçÁÖ¸é µÊ
+//ì¸ìê°€ ì˜ë¯¸ê°€ ì—†ëŠ” í•¨ìˆ˜ëŠ” í˜•íƒœë§Œ ë§ì¶°ì£¼ë©´ ë¨
 void ChangeScene(DWORD_PTR, DWORD_PTR)
 {
 	ChangeScene(SCENE_TYPE::START);
@@ -128,7 +128,7 @@ void CScene_Tool::SetTileIdx()
 
 void CScene_Tool::SaveTileData()
 {
-	//ÆÄÀÏ¿­±â ´ëÈ­»óÀÚ
+	//íŒŒì¼ì—´ê¸° ëŒ€í™”ìƒì
 	OPENFILENAME ofn = {};
 
 	wchar_t szName[256] = {};
@@ -137,7 +137,7 @@ void CScene_Tool::SaveTileData()
 	ofn.hwndOwner = CCore::GetInst()->GetMainHwnd();
 	ofn.lpstrFile = szName;
 	ofn.nMaxFile = sizeof(szName);
-	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";//¾î¶² ¹®ÀÚµµ °¡´ÉÇÏ°í, ¾î¶² È®ÀåÀÚµµ °¡´ÉÇÔ
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";//ì–´ë–¤ ë¬¸ìë„ ê°€ëŠ¥í•˜ê³ , ì–´ë–¤ í™•ì¥ìë„ ê°€ëŠ¥í•¨
 	ofn.nFilterIndex = 0;
 	ofn.lpstrFileTitle = nullptr;
 	ofn.nMaxFileTitle = 0;
@@ -156,30 +156,30 @@ void CScene_Tool::SaveTileData()
 
 void CScene_Tool::SaveTile(const wstring& _strFilePath)
 {
-	//Ä¿³Î ¿ÀºêÁ§Æ®
+	//ì»¤ë„ ì˜¤ë¸Œì íŠ¸
 	FILE* pFile = nullptr;
 
-	//ÆÄÀÏ ÀÌÁßÆ÷ÀÎÅÍ, ÆÄÀÏÀÇ Àı´ë°æ·Î, ¸ğµå
+	//íŒŒì¼ ì´ì¤‘í¬ì¸í„°, íŒŒì¼ì˜ ì ˆëŒ€ê²½ë¡œ, ëª¨ë“œ
 	_wfopen_s(&pFile, _strFilePath.c_str(), L"wb");
 	assert(pFile);
 
-	//Å¸ÀÏ °¡·Î¼¼·Î °³¼ö ÀúÀå
+	//íƒ€ì¼ ê°€ë¡œì„¸ë¡œ ê°œìˆ˜ ì €ì¥
 	UINT xCount = GetTileX();
 	UINT yCount = GetTileY();
 
 	fwrite(&xCount, sizeof(UINT), 1, pFile);
 	fwrite(&yCount, sizeof(UINT), 1, pFile);
 
-	//¸ğµç Å¸ÀÏµéÀ» °³º°ÀûÀ¸·Î ÀúÀåÇÒ µ¥ÀÌÅÍ
+	//ëª¨ë“  íƒ€ì¼ë“¤ì„ ê°œë³„ì ìœ¼ë¡œ ì €ì¥í•  ë°ì´í„°
 	const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
 
 	for (size_t i = 0; i < vecTile.size(); i++)
 	{
-		//°¢°¢ÀÇ °´Ã¼°¡ ¾Ë¾Æ¼­ ÇÊ¿äÇÑ°ÍÀÌ ÀÖ´Ù¸é ÀúÀå
+		//ê°ê°ì˜ ê°ì²´ê°€ ì•Œì•„ì„œ í•„ìš”í•œê²ƒì´ ìˆë‹¤ë©´ ì €ì¥
 		((CTile*)vecTile[i])->Save(pFile);
 	}
 
-	//ÆÄÀÏ ÀÔÃâ·Â ´İ±â
+	//íŒŒì¼ ì…ì¶œë ¥ ë‹«ê¸°
 	fclose(pFile);
 }
 
@@ -193,7 +193,7 @@ void CScene_Tool::LoadTileData()
 	ofn.hwndOwner = CCore::GetInst()->GetMainHwnd();
 	ofn.lpstrFile = szName;
 	ofn.nMaxFile = sizeof(szName);
-	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";//¾î¶² ¹®ÀÚµµ °¡´ÉÇÏ°í, ¾î¶² È®ÀåÀÚµµ °¡´ÉÇÔ
+	ofn.lpstrFilter = L"ALL\0*.*\0Tile\0*.tile\0";//ì–´ë–¤ ë¬¸ìë„ ê°€ëŠ¥í•˜ê³ , ì–´ë–¤ í™•ì¥ìë„ ê°€ëŠ¥í•¨
 	ofn.nFilterIndex = 0;
 	ofn.lpstrFileTitle = nullptr;
 	ofn.nMaxFileTitle = 0;
@@ -217,7 +217,7 @@ void CScene_Tool::LoadTileData()
 // ======================
 // Tile Count Window Proc
 // ======================
-INT_PTR CALLBACK TileCoundProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)//ÇÔ¼ö È£Ãâ ±Ô¾à
+INT_PTR CALLBACK TileCoundProc(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)//í•¨ìˆ˜ í˜¸ì¶œ ê·œì•½
 {
 	UNREFERENCED_PARAMETER(lParam);
 	switch (message)

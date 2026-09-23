@@ -1,21 +1,21 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CTexture.h"
 
 #include "CCore.h"
 
 void CTexture::Load(const wstring& _strFilePath)
 {
-	//ÆÄÀÏ·ÎºÎÅÍ ·ÎµùÇÑ µ¥ÀÌÅÍ¸¦ ºñÆ®¸ÊÀ¸·Î »ý¼º
+	//íŒŒì¼ë¡œë¶€í„° ë¡œë”©í•œ ë°ì´í„°ë¥¼ ë¹„íŠ¸ë§µìœ¼ë¡œ ìƒì„±
 	m_hBit = (HBITMAP)LoadImage(nullptr, _strFilePath.c_str(), IMAGE_BITMAP, 0, 0, LR_CREATEDIBSECTION | LR_LOADFROMFILE);
 
-	//ºñÆ®¸Ê°ú ¿¬°áÇÒ DC
+	//ë¹„íŠ¸ë§µê³¼ ì—°ê²°í•  DC
 	m_dc=CreateCompatibleDC(CCore::GetInst()->GetMainDC());
 
-	//ºñÆ®¸Ê°ú DC¿¬°á
+	//ë¹„íŠ¸ë§µê³¼ DCì—°ê²°
 	HBITMAP hPrevBit = (HBITMAP)SelectObject(m_dc, m_hBit);
 	DeleteObject(hPrevBit);
 
-	//ºñÆ®¸Ê Á¤º¸
+	//ë¹„íŠ¸ë§µ ì •ë³´
 	GetObject(m_hBit, sizeof(BITMAP), &m_bitInfo);
 
 	assert(m_hBit);

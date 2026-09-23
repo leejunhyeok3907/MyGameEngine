@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CIdleState.h"
 
 #include "CSceneManager.h"
@@ -23,18 +23,18 @@ void CIdleState::Enter()
 
 void CIdleState::update()
 {
-	//PlayerÀÇ À§Ä¡ Ã¼Å©
+	//Playerì˜ ìœ„ì¹˜ ì²´í¬
 	CPlayer* pPlayer = (CPlayer*)CSceneManager::GetInst()->GetCurScene()->GetPlayer();
 	Vec2 vPlayerPos = pPlayer->GetPos();
 
-	//¸ó½ºÅÍÀÇ ¹üÀ§ ¾ÈÀ¸·Î µé¾î¿À¸é ÃßÀû»óÅÂ ÀüÈ¯
+	//ëª¬ìŠ¤í„°ì˜ ë²”ìœ„ ì•ˆìœ¼ë¡œ ë“¤ì–´ì˜¤ë©´ ì¶”ì ìƒíƒœ ì „í™˜
 	CMonster* pMonster = GetMonster();
 	Vec2 vMonPos = pMonster->GetPos();
 
 	Vec2 vDiff = vPlayerPos - vMonPos;
 	float fLen = vDiff.Length();
 
-	//ÇÃ·¹ÀÌ¾î°¡ ¸ó½ºÅÍÀÇ ÀÎ½Ä¹üÀ§ ¾ÈÀ¸·Î ÁøÀÔ
+	//í”Œë ˆì´ì–´ê°€ ëª¬ìŠ¤í„°ì˜ ì¸ì‹ë²”ìœ„ ì•ˆìœ¼ë¡œ ì§„ì…
 	if (fLen < pMonster->GetInfo().fRecogRange)
 	{
 		ChangeAIState(GetAI(), MON_STATE::TRACE);  

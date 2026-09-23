@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CObject.h"
 
 enum class PLAYER_STATE
@@ -28,8 +28,8 @@ class CPlayer :
 {
 private:
     vector<CObject*>    m_vecColObj;
-    PLAYER_STATE        m_eCurState;    //ÇÃ·¹ÀÌ¾îÀÇ ÇöÀç»óÅÂ
-    PLAYER_STATE        m_ePrevState;   //ÇÃ·¹ÀÌ¾îÀÇ ÀÌÀü»óÅÂ
+    PLAYER_STATE        m_eCurState;    //í”Œë ˆì´ì–´ì˜ í˜„ì¬ìƒíƒœ
+    PLAYER_STATE        m_ePrevState;   //í”Œë ˆì´ì–´ì˜ ì´ì „ìƒíƒœ
     int                 m_iCurDir;
     int                 m_iPrevDir;
 

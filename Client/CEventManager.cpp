@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CEventManager.h"
 
 #include "CObject.h"
@@ -23,7 +23,7 @@ CEventManager::~CEventManager()
 void CEventManager::update()
 {
 	// ================================================
-	// ÀÌÀü ÇÁ·¹ÀÓ¿¡¼­ µî·ÏÇØµĞ Dead ObjectµéÀ» »èÁ¦ÇÔ.
+	// ì´ì „ í”„ë ˆì„ì—ì„œ ë“±ë¡í•´ë‘” Dead Objectë“¤ì„ ì‚­ì œí•¨.
 	// ================================================
 	for (size_t i = 0; i < m_vecDeadObj.size(); i++)
 	{
@@ -32,7 +32,7 @@ void CEventManager::update()
 	m_vecDeadObj.clear();
 
 	// ===========
-	// Event Ã³¸®
+	// Event ì²˜ë¦¬
 	// ===========
 
 	for (size_t i = 0; i < m_vecEvent.size(); i++)
@@ -44,7 +44,7 @@ void CEventManager::update()
 
 void CEventManager::Execute(const tEvent& _event)
 {
-	//switch-case¹® ¾È¿¡¼­ º¯¼ö¸¦ »ı¼ºÇÏ±â À§ÇØ¼± °ıÈ£·Î ºí·°À» ¸¸µé¾îÁÖ¾î¾ßÇÔ.
+	//switch-caseë¬¸ ì•ˆì—ì„œ ë³€ìˆ˜ë¥¼ ìƒì„±í•˜ê¸° ìœ„í•´ì„  ê´„í˜¸ë¡œ ë¸”ëŸ­ì„ ë§Œë“¤ì–´ì£¼ì–´ì•¼í•¨.
 	switch (_event.eEven)
 	{
 	case EVENT_TYPE::CREATE_OBJECT:
@@ -61,8 +61,8 @@ void CEventManager::Execute(const tEvent& _event)
 	case EVENT_TYPE::DELETE_OBJECT:
 	{
 		//lParam : Object Address
-		//Object¸¦ Dead»óÅÂ·Î º¯°æ
-		//»èÁ¦ ¿¹Á¤ ObjectµéÀ» ¸ğ¾ÆµÒ
+		//Objectë¥¼ Deadìƒíƒœë¡œ ë³€ê²½
+		//ì‚­ì œ ì˜ˆì • Objectë“¤ì„ ëª¨ì•„ë‘ 
 		CObject* pDeadObj = (CObject*)_event.lParam;
 		pDeadObj->SetDead();
 		m_vecDeadObj.push_back(pDeadObj);
@@ -71,15 +71,15 @@ void CEventManager::Execute(const tEvent& _event)
 	case EVENT_TYPE::SCENE_CHANGE:
 	{
 		//lParam : Next SceneType
-		//Scene º¯°æ
+		//Scene ë³€ê²½
 		CSceneManager::GetInst()->ChangeScene((SCENE_TYPE)_event.lParam);
 
-		//Æ÷Ä¿½º UI ÇØÁ¦ (ÀÌÀü SCeneÀÇ UI¸¦ °¡¸®Å°°í ÀÖ±â ¶§¹®)
+		//í¬ì»¤ìŠ¤ UI í•´ì œ (ì´ì „ SCeneì˜ UIë¥¼ ê°€ë¦¬í‚¤ê³  ìˆê¸° ë•Œë¬¸)
 		CUIManager::GetInst()->SetTargetedUI(nullptr);
 
-		//SceneÀÌ º¯°æµÉ¶§ ´ëºÎºĞÀº Scene³»ÀÇ °´Ã¼µéÀ» »èÁ¦½ÃÅ²´Ù.
-		//ÇØ´ç SceneÀÇ Object °ü·ÃµÇ¾îÀÖ´Â ÀÌº¥Æ®°¡ ¹ß»ıÇÒ °æ¿ì »èÁ¦µÈ ÁÖ¼ÒÀÇ À§Ä¡¸¦ ÂüÁ¶ÇÏ¿© ÀÌº¥Æ®¸¦ ¹ß»ı½ÃÅ³¼öÀÖÀ¸¹Ç·Î
-		//Scene Change ÀÌÈÄÀÇ ÀÌº¥Æ®¿¡ °ü·ÃÇØ¼­´Â Ã³¸®°¡ ÇÊ¿äÇÔ.
+		//Sceneì´ ë³€ê²½ë ë•Œ ëŒ€ë¶€ë¶„ì€ Sceneë‚´ì˜ ê°ì²´ë“¤ì„ ì‚­ì œì‹œí‚¨ë‹¤.
+		//í•´ë‹¹ Sceneì˜ Object ê´€ë ¨ë˜ì–´ìˆëŠ” ì´ë²¤íŠ¸ê°€ ë°œìƒí•  ê²½ìš° ì‚­ì œëœ ì£¼ì†Œì˜ ìœ„ì¹˜ë¥¼ ì°¸ì¡°í•˜ì—¬ ì´ë²¤íŠ¸ë¥¼ ë°œìƒì‹œí‚¬ìˆ˜ìˆìœ¼ë¯€ë¡œ
+		//Scene Change ì´í›„ì˜ ì´ë²¤íŠ¸ì— ê´€ë ¨í•´ì„œëŠ” ì²˜ë¦¬ê°€ í•„ìš”í•¨.
 	}
 	break;
 	case EVENT_TYPE::CHANGE_AI_STATE:

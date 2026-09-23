@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "CUI.h"
 class CPanelUI :
     public CUI
@@ -10,9 +10,9 @@ public:
     virtual void update();
     virtual void render(HDC _dc);
 
-    virtual void MouseOn();             //UIÀ§¿¡ ¸¶¿ì½º°¡ ¿Ã¶ó°¬À»¶§
-    virtual void MouseLbtnDown();       //ÇØ´ç UI¿¡¼­ ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°À» ´­·¶À»¶§ È£ÃâµÉ ÇÔ¼ö
-    virtual void MouseLbtnUp();         //ÇØ´ç UI¿¡¼­ ¸¶¿ì½º ¿ŞÂÊ ¹öÆ°ÀÌ ¶¼Á³À»¶§ È£ÃâµÉ ÇÔ¼ö
+    virtual void MouseOn();             //UIìœ„ì— ë§ˆìš°ìŠ¤ê°€ ì˜¬ë¼ê°”ì„ë•Œ
+    virtual void MouseLbtnDown();       //í•´ë‹¹ UIì—ì„œ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ í˜¸ì¶œë  í•¨ìˆ˜
+    virtual void MouseLbtnUp();         //í•´ë‹¹ UIì—ì„œ ë§ˆìš°ìŠ¤ ì™¼ìª½ ë²„íŠ¼ì´ ë–¼ì¡Œì„ë•Œ í˜¸ì¶œë  í•¨ìˆ˜
 
     CLONE(CPanelUI)
 

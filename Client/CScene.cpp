@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CScene.h"
 
 #include "CObject.h"
@@ -19,14 +19,14 @@ CScene::CScene()
 
 CScene::~CScene()
 {
-	//»ó¼ÓÀÇ ¸ñÀû->ÄÚµå Àç»ç¿ë
+	//ìƒì†ì˜ ëª©ì ->ì½”ë“œ ìž¬ì‚¬ìš©
 
-	//º¤ÅÍ¿¡ Æ÷ÀÎÅÍÅ¸ÀÔÀ¸·Î ¹Þ¾ÆÁÖ¾ú±â¿¡ Á÷Á¢ Áö¿öÁÖ¾î¾ßÇÔ.
+	//ë²¡í„°ì— í¬ì¸í„°íƒ€ìž…ìœ¼ë¡œ ë°›ì•„ì£¼ì—ˆê¸°ì— ì§ì ‘ ì§€ì›Œì£¼ì–´ì•¼í•¨.
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; i++)
 	{
 		for (size_t j = 0; j < m_arrObj[i].size(); j++)
 		{
-			// m_arrObj[i] ±×·ì º¤ÅÍÀÇ j¹°Ã¼ »èÁ¦
+			// m_arrObj[i] ê·¸ë£¹ ë²¡í„°ì˜ jë¬¼ì²´ ì‚­ì œ
 			delete m_arrObj[i][j];
 		}
 	}
@@ -98,8 +98,8 @@ void CScene::render(HDC _dc)
 
 void CScene::DeleteGroup(GROUP_TYPE _eType)
 {
-	//¿äÃ»µÈ Å¸ÀÔÀÌ ÀÖ¾î¾ß¸¸ ±× ¹öÀüÀÇ ÇÔ¼ö¸¦ ¸¸µé¾îÁÖ´Â ÇÔ¼ö ÅÛÇÃ¸´.
-	//½ÇÁ¦·Î´Â Safe_Delete_Vec<CObject*>(m_arrObj[(UINT)_eType]);ÀÇ ÇüÅÂÁö¸¸ »ý·«ÇØµµ ÄÄÆÄÀÏ·¯°¡ Å¸ÀÔÀ» Ãß°¡ÇÔ.
+	//ìš”ì²­ëœ íƒ€ìž…ì´ ìžˆì–´ì•¼ë§Œ ê·¸ ë²„ì „ì˜ í•¨ìˆ˜ë¥¼ ë§Œë“¤ì–´ì£¼ëŠ” í•¨ìˆ˜ í…œí”Œë¦¿.
+	//ì‹¤ì œë¡œëŠ” Safe_Delete_Vec<CObject*>(m_arrObj[(UINT)_eType]);ì˜ í˜•íƒœì§€ë§Œ ìƒëžµí•´ë„ ì»´íŒŒì¼ëŸ¬ê°€ íƒ€ìž…ì„ ì¶”ê°€í•¨.
 	Safe_Delete_Vec(m_arrObj[(UINT)_eType]);
 }
 
@@ -141,22 +141,22 @@ void CScene::LoadTile(const wstring& _strRelativePath)
 
 	FILE* pFile = nullptr;
 
-	//ÆÄÀÏ ÀÌÁßÆ÷ÀÎÅÍ, ÆÄÀÏÀÇ Àý´ë°æ·Î, ¸ðµå
+	//íŒŒì¼ ì´ì¤‘í¬ì¸í„°, íŒŒì¼ì˜ ì ˆëŒ€ê²½ë¡œ, ëª¨ë“œ
 	_wfopen_s(&pFile, strFilePath.c_str(), L"rb");
 	assert(pFile);
 
-	//Å¸ÀÏ °¡·Î¼¼·Î °³¼ö ºÒ·¯¿À±â
+	//íƒ€ì¼ ê°€ë¡œì„¸ë¡œ ê°œìˆ˜ ë¶ˆëŸ¬ì˜¤ê¸°
 	UINT xCount = 0;
 	UINT yCount = 0;
 
 	fread(&xCount, sizeof(UINT), 1, pFile);
 	fread(&yCount, sizeof(UINT), 1, pFile);
 
-	//ºÒ·¯¿Â °³¼ö¿¡ ¸Â°Ô EmptyTile Æ² ¸¸µé¾îµÎ±â
+	//ë¶ˆëŸ¬ì˜¨ ê°œìˆ˜ì— ë§žê²Œ EmptyTile í‹€ ë§Œë“¤ì–´ë‘ê¸°
 	CreateTile(xCount, yCount);
 
 
-	// ¸¸µé¾îÁø Å¸ÀÏ °³º°·Î ÇÊ¿äÇÑ Á¤º¸¸¦ ºÒ·¯¿À°Ô ÇÔ
+	// ë§Œë“¤ì–´ì§„ íƒ€ì¼ ê°œë³„ë¡œ í•„ìš”í•œ ì •ë³´ë¥¼ ë¶ˆëŸ¬ì˜¤ê²Œ í•¨
 	const vector<CObject*>& vecTile = GetGroupObject(GROUP_TYPE::TILE);
 
 	for (size_t i = 0; i < vecTile.size(); i++)
@@ -164,7 +164,7 @@ void CScene::LoadTile(const wstring& _strRelativePath)
 		((CTile*)vecTile[i])->Load(pFile);
 	}
 
-	//ÆÄÀÏ ÀÔÃâ·Â ´Ý±â
+	//íŒŒì¼ ìž…ì¶œë ¥ ë‹«ê¸°
 	fclose(pFile);
 }
 

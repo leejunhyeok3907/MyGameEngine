@@ -1,21 +1,21 @@
-#pragma once
+ï»¿#pragma once
 class CUI;
 
 class CUIManager
 {
 	SINGLE(CUIManager);
 private:
-	CUI* m_pFocusedUI;//Æ÷Ä¿½ÌµÈ UI
+	CUI* m_pFocusedUI;//í¬ì»¤ì‹±ëœ UI
 
 
 public:
 	void update();
 
-	//»õ UI°¡ »ı¼º‰çÀ»¶§ Æ÷Ä¿½Ì ÀüÈ¯
+	//ìƒˆ UIê°€ ìƒì„±ë¬ì„ë•Œ í¬ì»¤ì‹± ì „í™˜
 	void SetTargetedUI(CUI* _pUI);
 
 private:
-	//ºÎ¸ğ UI³»¿¡¼­ ½ÇÁ¦·Î Å¸°ÙÆÃµÈ UI¸¦ Ã£¾Æ¼­ ¹İÈ¯ÇÏ´Â ÇÔ¼ö
+	//ë¶€ëª¨ UIë‚´ì—ì„œ ì‹¤ì œë¡œ íƒ€ê²ŸíŒ…ëœ UIë¥¼ ì°¾ì•„ì„œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 	CUI* GetTargetedUI(CUI* _pParentUI);
 
 	CUI* GetFocusedUI();

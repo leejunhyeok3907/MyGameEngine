@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CSound.h"
 
 CSound::CSound()
@@ -18,7 +18,7 @@ int CSound::Load(const wchar_t* _strPath)
 	if (nullptr == CSoundManager::GetInst()->GetSoundDevice())
 		assert(nullptr);
 
-	//È®ÀåÀÚ ÀÌ¸§ ±¸º°ÇÏ±â
+	//í™•ì¥ì ì´ë¦„ êµ¬ë³„í•˜ê¸°
 	wchar_t szExt[10] = { 0, };
 	_wsplitpath_s(_strPath, nullptr, 0, nullptr, 0, nullptr, 0, szExt, 10);
 
@@ -34,7 +34,7 @@ int CSound::Load(const wchar_t* _strPath)
 
 void CSound::Play(bool _bLoop)
 {
-	//Play ÇÔ¼öÀÇ 3¹øÂ° º¯¼ö´Â »ç¿îµå¸¦ ¹İº¹Àç»ı ÇÒ °ÍÀÎÁö ¾Æ´ÑÁö¸¦ °áÁ¤ÇÑ´Ù.
+	//Play í•¨ìˆ˜ì˜ 3ë²ˆì§¸ ë³€ìˆ˜ëŠ” ì‚¬ìš´ë“œë¥¼ ë°˜ë³µì¬ìƒ í•  ê²ƒì¸ì§€ ì•„ë‹Œì§€ë¥¼ ê²°ì •í•œë‹¤.
 	if (_bLoop)
 		m_pSoundBuffer->Play(0, 0, DSBPLAY_LOOPING);
 	else
@@ -85,11 +85,11 @@ bool CSound::LoadWaveSound(const wstring& _strPath)
 
 	if (nullptr == hFile)
 	{
-		MessageBox(NULL, L"»ç¿îµå ¸®·Î½º °æ·Î¿¡ ÆÄÀÏ ¾øÀ½", L"»ç¿îµå ·Îµù ½ÇÆĞ", MB_OK);
+		MessageBox(NULL, L"ì‚¬ìš´ë“œ ë¦¬ë¡œìŠ¤ ê²½ë¡œì— íŒŒì¼ ì—†ìŒ", L"ì‚¬ìš´ë“œ ë¡œë”© ì‹¤íŒ¨", MB_OK);
 		return false;
 	}
 
-	//Chunk Ã»Å© ±¸Á¶Ã¼, ¹®ÀÚ¿­·Î »öÀÎÀ» ÀÎ½ÄÇØ¼­ WaveFormat ¹× ¹öÆÛ¼±¾ğÁ¤º¸¸¦ ÀĞ¾î¿Â´Ù.
+	//Chunk ì²­í¬ êµ¬ì¡°ì²´, ë¬¸ìì—´ë¡œ ìƒ‰ì¸ì„ ì¸ì‹í•´ì„œ WaveFormat ë° ë²„í¼ì„ ì–¸ì •ë³´ë¥¼ ì½ì–´ì˜¨ë‹¤.
 	MMCKINFO	pParent;
 	memset(&pParent, 0, sizeof(pParent));
 	pParent.fccType = mmioFOURCC('W', 'A', 'V', 'E');
@@ -116,7 +116,7 @@ bool CSound::LoadWaveSound(const wstring& _strPath)
 
 	if (FAILED(CSoundManager::GetInst()->GetSoundDevice()->CreateSoundBuffer(&m_tBuffInfo, &m_pSoundBuffer, NULL)))
 	{
-		MessageBox(NULL, L"»ç¿îµå¹öÆÛ »ı¼º ½ÇÆĞ", L"Error!", MB_OK);
+		MessageBox(NULL, L"ì‚¬ìš´ë“œë²„í¼ ìƒì„± ì‹¤íŒ¨", L"Error!", MB_OK);
 		return false;
 	}
 
@@ -136,7 +136,7 @@ bool CSound::LoadWaveSound(const wstring& _strPath)
 
 	mmioClose(hFile, 0);
 
-	//ÃÊ±â À½·® Àı¹İÀ¸·Î ¼³Á¤
+	//ì´ˆê¸° ìŒëŸ‰ ì ˆë°˜ìœ¼ë¡œ ì„¤ì •
 	SetVolume(50.f);
 
 	return true;
@@ -149,7 +149,7 @@ int CSound::GetDecibel(float _fVolume)
 	else if (_fVolume <= 0.f)
 		_fVolume = 0.00001f;
 
-	// 1 ~ 100 »çÀÌ°ªÀ» µ¥½Ãº§ ´ÜÀ§·Î º¯°æ
+	// 1 ~ 100 ì‚¬ì´ê°’ì„ ë°ì‹œë²¨ ë‹¨ìœ„ë¡œ ë³€ê²½
 	int iVolume = (LONG)(-2000.0 * log10(100.f / _fVolume));
 
 	if (iVolume < -10000)

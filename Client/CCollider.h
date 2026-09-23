@@ -1,22 +1,22 @@
-#pragma once
+ï»¿#pragma once
 
 class CObject;
 
 class CCollider
 {
 private:
-	static	UINT g_iNextID;		//Ãæµ¹Ã¼ÀÇ ´ÙÀ½ ID°ª
+	static	UINT g_iNextID;		//ì¶©ëŒì²´ì˜ ë‹¤ìŒ IDê°’
 
-	CObject*	m_pOwner;		//colliderÀ» ¼ÒÀ¯ÇÏ°í ÀÖ´Â object
+	CObject*	m_pOwner;		//colliderì„ ì†Œìœ í•˜ê³  ìˆëŠ” object
 
-	Vec2		m_vOffsetPos;	//object·ÎºÎÅÍÀÇ »ó´ëÀûÀÎ À§Ä¡
-	Vec2		m_vFinalPos;	//final update¿¡¼­ ¸Å ÇÁ·¹ÀÓ¸¶´Ù °è»êµÇ´Â ÃÖÁ¾ À§Ä¡
-	Vec2		m_vScale;		//Ãæµ¹Ã¼ÀÇ Å©±â
+	Vec2		m_vOffsetPos;	//objectë¡œë¶€í„°ì˜ ìƒëŒ€ì ì¸ ìœ„ì¹˜
+	Vec2		m_vFinalPos;	//final updateì—ì„œ ë§¤ í”„ë ˆì„ë§ˆë‹¤ ê³„ì‚°ë˜ëŠ” ìµœì¢… ìœ„ì¹˜
+	Vec2		m_vScale;		//ì¶©ëŒì²´ì˜ í¬ê¸°
 
-	UINT		m_iID;			//Ãæµ¹Ã¼ÀÇ °íÀ¯ÇÑ ID°ª
+	UINT		m_iID;			//ì¶©ëŒì²´ì˜ ê³ ìœ í•œ IDê°’
 	int			m_iCol;
 
-	bool		m_bActive;		//Ãæµ¹Ã¼ÀÇ È°¼ºÈ­ ¿©ºÎ
+	bool		m_bActive;		//ì¶©ëŒì²´ì˜ í™œì„±í™” ì—¬ë¶€
 
 public:
 	void SetOffsetPos(Vec2 _vPos) { m_vOffsetPos = _vPos; }
@@ -35,9 +35,9 @@ public:
 	void render(HDC _dc);
 
 public:
-	void OnCollision(CCollider* _pOther);//Ãæµ¹ ÁßÀÎ °æ¿ì È£ÃâµÇ´Â ÇÔ¼ö
-	void OnCollisionEnter(CCollider* _pOther);//Ãæµ¹ ÁøÀÔ½Ã
-	void OnCollisionExit(CCollider* _pOther);//Ãæµ¹ ÇØÁ¦½Ã
+	void OnCollision(CCollider* _pOther);//ì¶©ëŒ ì¤‘ì¸ ê²½ìš° í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜
+	void OnCollisionEnter(CCollider* _pOther);//ì¶©ëŒ ì§„ì…ì‹œ
+	void OnCollisionExit(CCollider* _pOther);//ì¶©ëŒ í•´ì œì‹œ
 
 	CCollider& operator=(CCollider& _origin) = delete;
 

@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CTile.h"
 
 #include "CTexture.h"
@@ -31,7 +31,7 @@ void CTile::render(HDC _dc)
 	UINT iCurRow = m_iImgIdx / iMaxCol;
 	UINT iCurCol = m_iImgIdx % iMaxCol;
 
-	//ÀÌ¹ÌÁö ¹üÀ§¸¦ ¹ş¾î³­ ÀÎµ¦½º
+	//ì´ë¯¸ì§€ ë²”ìœ„ë¥¼ ë²—ì–´ë‚œ ì¸ë±ìŠ¤
 	if (iMaxRow <= iCurRow) assert(nullptr);
 
 

@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CPathManager.h"
 #include "CCore.h"
 
@@ -14,10 +14,10 @@ CPathManager::~CPathManager()
 
 void CPathManager::init()
 {
-	//À©µµ¿ì¿¡¼­ Á¦°øÇÏ´Â ÇöÀç µğ·ºÅä¸®¸¦ ¾Ë·ÁÁÖ´Â ÇÔ¼ö
+	//ìœˆë„ìš°ì—ì„œ ì œê³µí•˜ëŠ” í˜„ì¬ ë””ë ‰í† ë¦¬ë¥¼ ì•Œë ¤ì£¼ëŠ” í•¨ìˆ˜
 	GetCurrentDirectory(255, m_szContentPath);
 
-	//»óÀ§Æú´õ·Î ÀÌµ¿
+	//ìƒìœ„í´ë”ë¡œ ì´ë™
 	int iLen = (int)wcslen(m_szContentPath);
 
 	for (int i = iLen - 1; 0 <= i; i--)
@@ -41,7 +41,7 @@ wstring CPathManager::GetRelativePath(const wchar_t* _filepath)
 	size_t iAbsLen = wcslen(m_szContentPath);
 	size_t iFullLen = strFilePath.length();
 
-	//ÀüÃ¼ ¹®ÀÚ¿­ ¾È¿¡¼­ Àı´ë°æ·ÎÀÇ ±æÀÌºÎÅÍ ÀüÃ¼¹®ÀÚ¿­-Àı´ë°æ·ÎÀÇ ±æÀÌ¸¦ »« °ª¸¸Å­
+	//ì „ì²´ ë¬¸ìì—´ ì•ˆì—ì„œ ì ˆëŒ€ê²½ë¡œì˜ ê¸¸ì´ë¶€í„° ì „ì²´ë¬¸ìì—´-ì ˆëŒ€ê²½ë¡œì˜ ê¸¸ì´ë¥¼ ëº€ ê°’ë§Œí¼
 	wstring strRelativePath = strFilePath.substr(iAbsLen, (iFullLen - iAbsLen));
 
 	return strRelativePath;

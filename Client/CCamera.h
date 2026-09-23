@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CObject;
 class CTexture;
@@ -12,28 +12,28 @@ enum class CAM_EFFECT
 
 struct tCamEffect
 {
-	CAM_EFFECT	eEffect;		//Ä«¸Ş¶ó È¿°ú
-	float		fDuration;	//È¿°ú ÃÖ´ë ÁøÇà ½Ã°£
-	float		fCurTime;		//Ä«¸Ş¶ó È¿°ú ÇöÀç ÁøÇàµÈ ½Ã°£
+	CAM_EFFECT	eEffect;		//ì¹´ë©”ë¼ íš¨ê³¼
+	float		fDuration;	//íš¨ê³¼ ìµœëŒ€ ì§„í–‰ ì‹œê°„
+	float		fCurTime;		//ì¹´ë©”ë¼ íš¨ê³¼ í˜„ì¬ ì§„í–‰ëœ ì‹œê°„
 };
 
 class CCamera
 {
 	SINGLE(CCamera);
 private:
-	Vec2 m_vLookAt;//Ä«¸Ş¶ó°¡ º¸´Â À§Ä¡
-	Vec2 m_vCurLookAt; //ÀÌÀü À§Ä¡¿Í ÇöÀçÀ§Ä¡ º¸Á¤ À§Ä¡
-	Vec2 m_vPrevLookAt; //Ä«¸Ş¶ó°¡ º¸´Â ÀÌÀü ÇÁ·¹ÀÓ À§Ä¡
+	Vec2 m_vLookAt;//ì¹´ë©”ë¼ê°€ ë³´ëŠ” ìœ„ì¹˜
+	Vec2 m_vCurLookAt; //ì´ì „ ìœ„ì¹˜ì™€ í˜„ì¬ìœ„ì¹˜ ë³´ì • ìœ„ì¹˜
+	Vec2 m_vPrevLookAt; //ì¹´ë©”ë¼ê°€ ë³´ëŠ” ì´ì „ í”„ë ˆì„ ìœ„ì¹˜
 
-	CObject* m_pTargetObj;//Ä«¸Ş¶ó Å¸°Ù ¿ÀºêÁ§Æ®
-	Vec2 m_vDiff; //ÇØ»óµµ Áß¾Ó À§Ä¡¿Í, Ä«¸Ş¶ó LookAt°£ÀÇ Â÷ÀÌ °ª
+	CObject* m_pTargetObj;//ì¹´ë©”ë¼ íƒ€ê²Ÿ ì˜¤ë¸Œì íŠ¸
+	Vec2 m_vDiff; //í•´ìƒë„ ì¤‘ì•™ ìœ„ì¹˜ì™€, ì¹´ë©”ë¼ LookAtê°„ì˜ ì°¨ì´ ê°’
 
-	float m_fTime;	//Å¸°ÙÀ» µû¶ó°¡´Âµ¥ °É¸®´Â ½Ã°£
-	float m_fSpeed; //Å¸°ÙÀ» µû¶ó°¡´Â ¼Óµµ
-	float m_fAccTime; //´©Àû ½Ã°£
+	float m_fTime;	//íƒ€ê²Ÿì„ ë”°ë¼ê°€ëŠ”ë° ê±¸ë¦¬ëŠ” ì‹œê°„
+	float m_fSpeed; //íƒ€ê²Ÿì„ ë”°ë¼ê°€ëŠ” ì†ë„
+	float m_fAccTime; //ëˆ„ì  ì‹œê°„
 
 	list<tCamEffect> m_listCamEffect;
-	CTexture* m_pVeilTex;	//Ä«¸Ş¶ó °¡¸²¸· ÅØ½ºÃÄ(°ËÀº»öÀ¸·Î)
+	CTexture* m_pVeilTex;	//ì¹´ë©”ë¼ ê°€ë¦¼ë§‰ í…ìŠ¤ì³(ê²€ì€ìƒ‰ìœ¼ë¡œ)
 
 public:
 	void SetLookAt(Vec2 _vLook) 
@@ -60,7 +60,7 @@ public:
 
 		m_listCamEffect.push_back(ef);
 	}
-	void FadeOut(float _fDuration)//¸îÃÊ¿¡ °ÉÃÄ¼­ È¿°ú¸¦ ³ÖÀ»Áö
+	void FadeOut(float _fDuration)//ëª‡ì´ˆì— ê±¸ì³ì„œ íš¨ê³¼ë¥¼ ë„£ì„ì§€
 	{
 		tCamEffect ef = {};
 
@@ -74,7 +74,7 @@ public:
 	}
 
 public:
-	//ÃÖÃÊ·Î ½Ì±ÛÅæÀÌ »ı¼ºµÇ´Â ½ÃÁ¡¿¡ ÇØ»óµµ Á¤º¸¸¦ ¸ğ¸¦¼öµµ ÀÖÀ¸¹Ç·Î ÃÊ±âÈ­ ½ÃÁ¡À» Á¤È®ÇÏ°Ô Á¤ÇØÁÙ¼öÀÖ´Â ÇÔ¼ö°¡ ÇÊ¿äÇÔ.
+	//ìµœì´ˆë¡œ ì‹±ê¸€í†¤ì´ ìƒì„±ë˜ëŠ” ì‹œì ì— í•´ìƒë„ ì •ë³´ë¥¼ ëª¨ë¥¼ìˆ˜ë„ ìˆìœ¼ë¯€ë¡œ ì´ˆê¸°í™” ì‹œì ì„ ì •í™•í•˜ê²Œ ì •í•´ì¤„ìˆ˜ìˆëŠ” í•¨ìˆ˜ê°€ í•„ìš”í•¨.
 	void init();
 	void update();
 	void render(HDC _dc);

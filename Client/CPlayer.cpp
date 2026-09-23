@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CPlayer.h"
 #include "CKeyManager.h"
 #include "CTimeManager.h"
@@ -24,7 +24,7 @@ CPlayer::CPlayer()
 	, m_iCurDir(1)
 	, m_iPrevDir(1)
 {
-	//ÅØ½ºÃÄ ·ÎµùÇÏ±â
+	//í…ìŠ¤ì³ ë¡œë”©í•˜ê¸°
 	//m_pTex=CResourceManager::GetInst()->LoadTexture(L"PlayerTex", L"texture\\image.bmp");
 
 	CreateCollider();
@@ -32,7 +32,7 @@ CPlayer::CPlayer()
 	GetCollider()->SetOffsetPos(Vec2(-5.f, 20.f));
 	GetCollider()->SetScale(Vec2(20.f, 20.f));
 
-	//ÅØ½ºÃÄ ·ÎµùÇÏ±â
+	//í…ìŠ¤ì³ ë¡œë”©í•˜ê¸°
 	//CTexture* pTex = CResourceManager::GetInst()->LoadTexture(L"PlayerTex", L"texture\\Male-Average-Average-Sprite-Sheet.bmp");
 	CreateAnimator();
 
@@ -80,7 +80,7 @@ void CPlayer::update()
 
 void CPlayer::render(HDC _dc)
 {
-	//ÄÄÆ÷³ÍÆ®(Ãæµ¹Ã¼, ect)µîÀÌ ÀÖ´Â°æ¿ì ·»´õ
+	//ì»´í¬ë„ŒíŠ¸(ì¶©ëŒì²´, ect)ë“±ì´ ìžˆëŠ”ê²½ìš° ë Œë”
 	Component_render(_dc);
 
 	//CTexture* pTex = CResourceManager::GetInst()->LoadTexture(L"PT", L"texture\\img.bmp");
@@ -130,8 +130,8 @@ void CPlayer::CreateMissile()
 
 void CPlayer::update_state()
 {
-	//¿ÜÀûÀÇ ¿ä¼Ò¿¡ ÀÇÇÑ »óÅÂº¯È¯ ¶ÇÇÑ °í·ÁÇØ¾ßÇÏ±â ¶§¹®¿¡
-	//´Ü¼øÇÏ°Ô Å° ÀÔ·ÂÀ¸·Î¸¸ ÀüÈ¯ÀÌ ÀÌ·ç¾îÁö¸é ¾Ö´Ï¸ÞÀÌ¼Ç¿¡ ¹ö±×°¡ »ý±ä´Ù.
+	//ì™¸ì ì˜ ìš”ì†Œì— ì˜í•œ ìƒíƒœë³€í™˜ ë˜í•œ ê³ ë ¤í•´ì•¼í•˜ê¸° ë•Œë¬¸ì—
+	//ë‹¨ìˆœí•˜ê²Œ í‚¤ ìž…ë ¥ìœ¼ë¡œë§Œ ì „í™˜ì´ ì´ë£¨ì–´ì§€ë©´ ì• ë‹ˆë©”ì´ì…˜ì— ë²„ê·¸ê°€ ìƒê¸´ë‹¤.
 
 	if (KEY_HOLD(KEY::A))
 	{
@@ -196,7 +196,7 @@ void CPlayer::update_move()
 
 void CPlayer::update_animation()
 {
-	//¾î¶°ÇÑ ¿ä¼Ò¿¡ ÀÇÇØ »óÅÂ°¡ ¹Ù²ð°æ¿ì¿¡¸¸ ¾÷µ¥ÀÌÆ®
+	//ì–´ë– í•œ ìš”ì†Œì— ì˜í•´ ìƒíƒœê°€ ë°”ë€”ê²½ìš°ì—ë§Œ ì—…ë°ì´íŠ¸
 	if (m_ePrevState == m_eCurState
 		&& m_iPrevDir == m_iCurDir) return;
 
@@ -245,10 +245,10 @@ void CPlayer::update_animation()
 
 void CPlayer::update_gravity()
 {
-	//Áß·ÂÀÇ Æ¯Â¡
-	// ÀÏ¹ÝÀûÀÎ ÈûÀÇ °æ¿ì µ¿ÀÏÇÑ Èû ³»¿¡ Áú·®ÀÌ Å¬°æ¿ì °¡¼ÓÀÌ ÁÙ¾îµå´Âµ¥ (F=M*A)
-	// Áß·Â¿¡ ÀÇÇÑ ÈûÀÇ °æ¿ì ¹°Ã¼ÀÇ Áú·®Àº Å« ¿µÇâÀ» ÁÖÁö¸øÇÏ±â¶§¹®¿¡
-	// Áß·ÂÀÇ °æ¿ì °íÁ¤ÀûÀÎ °¡¼Ó(9.8m/s)À» Áà¾ßÇÑ´Ù
+	//ì¤‘ë ¥ì˜ íŠ¹ì§•
+	// ì¼ë°˜ì ì¸ íž˜ì˜ ê²½ìš° ë™ì¼í•œ íž˜ ë‚´ì— ì§ˆëŸ‰ì´ í´ê²½ìš° ê°€ì†ì´ ì¤„ì–´ë“œëŠ”ë° (F=M*A)
+	// ì¤‘ë ¥ì— ì˜í•œ íž˜ì˜ ê²½ìš° ë¬¼ì²´ì˜ ì§ˆëŸ‰ì€ í° ì˜í–¥ì„ ì£¼ì§€ëª»í•˜ê¸°ë•Œë¬¸ì—
+	// ì¤‘ë ¥ì˜ ê²½ìš° ê³ ì •ì ì¸ ê°€ì†(9.8m/s)ì„ ì¤˜ì•¼í•œë‹¤
 
 	GetRigidBody()->AddForce(Vec2(0.f, 500.f)); 
 }

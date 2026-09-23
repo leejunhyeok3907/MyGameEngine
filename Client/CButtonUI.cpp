@@ -1,4 +1,4 @@
-#include "CButtonUI.h"
+ï»¿#include "CButtonUI.h"
 #include "CScene.h"
 
 CButtonUI::CButtonUI()
@@ -34,10 +34,10 @@ void CButtonUI::MouseLbtnClicked()
 		m_pFunc(m_param1, m_param2);
 	}
 
-	//µÎ°ª ¸ğµÎ ÁÖ¼Ò°ªÀÌ Ã¤¿öÁ®ÀÖ´Â °æ¿ì
+	//ë‘ê°’ ëª¨ë‘ ì£¼ì†Œê°’ì´ ì±„ì›Œì ¸ìˆëŠ” ê²½ìš°
 	if (m_pSceneFunc && m_pSceneInst)
 	{
-		//°´Ã¼·Î ¸É¹öÇÔ¼öÀÇ ÁÖ¼Ò¸¦ È£Ãâ
+		//ê°ì²´ë¡œ ë§´ë²„í•¨ìˆ˜ì˜ ì£¼ì†Œë¥¼ í˜¸ì¶œ
 		((*m_pSceneInst).*m_pSceneFunc)();
 	}
 }

@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "function.h"
 
 #include "CEventManager.h"
@@ -8,9 +8,9 @@ void CreateObject(CObject* _pObj, GROUP_TYPE _eGroup)
 	tEvent evn = {};
 	evn.eEven = EVENT_TYPE::CREATE_OBJECT;
 
-	//typedefµÈ ÀÚ·áÇüÀ» ÀÌ¿ëÇÏ´Â ÀÌÀ¯
-	//ÇÃ·§Æû¿¡ ½Å°æ¾²Áö¾Ê°í ÄÚµå¸¦ ÀÛ¼ºÇÒ¼öÀÖÀ½.
-	//(»ç¿ë È¯°æ¿¡ µû¶ó ÀçÁ¤ÀÇ ÇØ³õ¾Ò±â¶§¹®¿¡ ÀÚµ¿À¸·Î ÇÃ·§Æû¿¡ ¸ÂÃß¾î ÀÚ·áÇüÀÇ Å©±â°¡ º¯°æµÊ.)
+	//typedefëœ ìë£Œí˜•ì„ ì´ìš©í•˜ëŠ” ì´ìœ 
+	//í”Œë«í¼ì— ì‹ ê²½ì“°ì§€ì•Šê³  ì½”ë“œë¥¼ ì‘ì„±í• ìˆ˜ìˆìŒ.
+	//(ì‚¬ìš© í™˜ê²½ì— ë”°ë¼ ì¬ì •ì˜ í•´ë†“ì•˜ê¸°ë•Œë¬¸ì— ìë™ìœ¼ë¡œ í”Œë«í¼ì— ë§ì¶”ì–´ ìë£Œí˜•ì˜ í¬ê¸°ê°€ ë³€ê²½ë¨.)
 	evn.lParam = (DWORD_PTR)_pObj;
 	evn.wParam = (DWORD_PTR)_eGroup;
 
@@ -66,10 +66,10 @@ void SaveWString(const wstring& _str, FILE* _pFile)
 	const wchar_t* pStrName = _str.c_str();
 	size_t iLen = _str.length();
 
-	//¹®ÀÚ ±æÀÌ ÀúÀå
+	//ë¬¸ì ê¸¸ì´ ì €ì¥
 	fwrite(&iLen, sizeof(size_t), 1, _pFile);
 
-	//¹®ÀÚ¿­ ÀúÀå
+	//ë¬¸ìì—´ ì €ì¥
 	fwrite(pStrName, sizeof(wchar_t), iLen, _pFile);
 }
 

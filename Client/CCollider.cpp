@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CCollider.h"
 
 #include "CObject.h"
@@ -34,7 +34,7 @@ CCollider::~CCollider()
 
 void CCollider::finalupdate()
 {
-	//ObjectÀÇ À§Ä¡·Î º¯°æ
+	//Objectì˜ ìœ„ì¹˜ë¡œ ë³€ê²½
 	Vec2 vObjectPos = m_pOwner->GetPos();
 	m_vFinalPos = vObjectPos + m_vOffsetPos;
 

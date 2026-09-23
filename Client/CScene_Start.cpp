@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CScene_Start.h"
 
 #include "CObject.h"
@@ -38,7 +38,7 @@ CScene_Start::~CScene_Start()
 
 void CScene_Start::update()
 {
-	//CScene::update(); //ºÎ¸ðÂÊ¿¡ ±¸ÇöÇØµÐ ¸É¹öÇÔ¼ö¸¦ ±×´ë·Î ÀÌ¿ë
+	//CScene::update(); //ë¶€ëª¨ìª½ì— êµ¬í˜„í•´ë‘” ë§´ë²„í•¨ìˆ˜ë¥¼ ê·¸ëŒ€ë¡œ ì´ìš©
 
 	//if (KEY_TAP(KEY::ENTER))
 	//{
@@ -116,7 +116,7 @@ void CScene_Start::render(HDC _dc)
 
 void CScene_Start::Enter()
 {
-	//Object Ãß°¡
+	//Object ì¶”ê°€
 	CObject* pObj = new CPlayer;
 	
 	pObj->SetName(L"Player");
@@ -146,16 +146,16 @@ void CScene_Start::Enter()
 	pGround->SetScale(Vec2(200.f, 60.f));
 	AddObject(pGround, GROUP_TYPE::GROUND);
 
-	//Å¸ÀÏ ·Îµù
+	//íƒ€ì¼ ë¡œë”©
 	//LoadTile(L"Tile\\Start.tile");
 
-	//Ãæµ¹ ÁöÁ¤
-	//Player±×·ì°ú Monster±×·ì °£ÀÇ Ãæµ¹Ã¼Å©
+	//ì¶©ëŒ ì§€ì •
+	//Playerê·¸ë£¹ê³¼ Monsterê·¸ë£¹ ê°„ì˜ ì¶©ëŒì²´í¬
 	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::MONSTER);
 	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::MONSTER, GROUP_TYPE::PROJECTILE_PLAYER);
 	CCollisionManager::GetInst()->CheckGroup(GROUP_TYPE::PLAYER, GROUP_TYPE::GROUND);
 
-	//Camera Look ÁöÁ¤
+	//Camera Look ì§€ì •
 	CCamera::GetInst()->SetLookAt(vResolution / 2.f);
 
 	init();

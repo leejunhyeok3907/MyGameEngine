@@ -1,4 +1,4 @@
-#include "CPanelUI.h"
+ï»¿#include "CPanelUI.h"
 #include "CKeyManager.h"
 
 CPanelUI::CPanelUI()
@@ -23,7 +23,7 @@ void CPanelUI::render(HDC _dc)
 
 void CPanelUI::MouseOn()
 {
-	//´©¸£°í ³­ ÀÌÈÄ·ÎºÎÅÍ µå·¡±×Áß
+	//ëˆ„ë¥´ê³  ë‚œ ì´í›„ë¡œë¶€í„° ë“œë˜ê·¸ì¤‘
 	if (IsLbtnDown())
 	{
 		Vec2 vDiff = MOUSE_POS - m_vDragStart;

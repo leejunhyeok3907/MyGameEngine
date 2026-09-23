@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CCollider;
 
@@ -18,8 +18,8 @@ class CCollisionManager
 	SINGLE(CCollisionManager)
 
 private:
-	map<ULONGLONG, bool> m_mapCollisionInfo;//Ãæµ¹Ã¼ °£ÀÇ ÀÌÀü ÇÁ·¹ÀÓ Ãæµ¹ Á¤º¸
-	UINT m_arrCheck[(UINT)GROUP_TYPE::END];//±×·ì°£ÀÇ Ãæµ¹ Ã¼Å© ¸ÅÆ®¸¯½º
+	map<ULONGLONG, bool> m_mapCollisionInfo;//ì¶©ëŒì²´ ê°„ì˜ ì´ì „ í”„ë ˆì„ ì¶©ëŒ ì •ë³´
+	UINT m_arrCheck[(UINT)GROUP_TYPE::END];//ê·¸ë£¹ê°„ì˜ ì¶©ëŒ ì²´í¬ ë§¤íŠ¸ë¦­ìŠ¤
 
 
 public:

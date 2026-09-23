@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CResourceManager.h"
 
 #include "CPathManager.h"
@@ -58,7 +58,7 @@ CTexture* CResourceManager::FindTexture(const wstring& _strKey)
 {
 	map<wstring, CResource*>::iterator iter = m_mapTex.find(_strKey);
 
-	if (iter == m_mapTex.end())//Ã£Áö ¸øÇß´Ù
+	if (iter == m_mapTex.end())//ì°¾ì§€ ëª»í–ˆë‹¤
 	{
 		return nullptr;
 	}
@@ -91,7 +91,7 @@ CSound* CResourceManager::FindSound(const wstring& _strKey)
 {
 	map<wstring, CResource*>::iterator iter = m_mapSound.find(_strKey);
 
-	if (iter == m_mapSound.end())//Ã£Áö ¸øÇß´Ù
+	if (iter == m_mapSound.end())//ì°¾ì§€ ëª»í–ˆë‹¤
 	{
 		return nullptr;
 	}

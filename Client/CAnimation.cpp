@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CAnimation.h"
 #include "CAnimator.h"
 #include "CTexture.h"
@@ -56,7 +56,7 @@ void CAnimation::render(HDC _dc)
 	CObject* pObj = m_pAnimator->GetObj();
 	Vec2 vPos = pObj->GetPos();
 
-	vPos += m_vecFrame[m_iCurFrame].vOffset;//Object Position¿¡ Offset¸¸Å­ Ãß°¡ ÀÌµ¿ À§Ä¡
+	vPos += m_vecFrame[m_iCurFrame].vOffset;//Object Positionì— Offsetë§Œí¼ ì¶”ê°€ ì´ë™ ìœ„ì¹˜
 
 	vPos = CCamera::GetInst()->GetRenderPos(vPos);
 
@@ -101,14 +101,14 @@ void CAnimation::Save(const wstring& _strRelativePath)
 
 	assert(pFile);
 
-	//AnimationÀÇ ÀÌ¸§À» ÀúÀå µ¥ÀÌÅÍ Á÷·ÄÈ­(Serialization)
+	//Animationì˜ ì´ë¦„ì„ ì €ì¥ ë°ì´í„° ì§ë ¬í™”(Serialization)
 	fprintf(pFile, "[Animation Name]\n");
 //	SaveWString(m_strName, pFile);
 	string strName = string(m_strName.begin(), m_strName.end());
 	fprintf(pFile, strName.c_str());
 	fprintf(pFile, "\n");
 
-	//AnimationÀÌ »ç¿ëÇÏ´Â ÅØ½ºÃÄ
+	//Animationì´ ì‚¬ìš©í•˜ëŠ” í…ìŠ¤ì³
 	fprintf(pFile, "[Texture Name]\n");
 	strName = string(m_pTex->GetKey().begin(), m_pTex->GetKey().end());
 	fprintf(pFile, strName.c_str());
@@ -122,7 +122,7 @@ void CAnimation::Save(const wstring& _strRelativePath)
 	/*SaveWString(m_pTex->GetKey(), pFile);
 	SaveWString(m_pTex->GetRelativePath(), pFile);*/
 
-	//ÇÁ·¹ÀÓ °³¼ö
+	//í”„ë ˆì„ ê°œìˆ˜
 	fprintf(pFile, "[Frame Count]\n");
 	fprintf(pFile, "%d\n", (int)m_vecFrame.size());
 
@@ -149,7 +149,7 @@ void CAnimation::Save(const wstring& _strRelativePath)
 	//size_t iFrameCount = m_vecFrame.size();
 	//fwrite(&iFrameCount, sizeof(size_t), 1, pFile);
 
-	//¸ğµç ÇÁ·¹ÀÓ Á¤º¸
+	//ëª¨ë“  í”„ë ˆì„ ì •ë³´
 	//fwrite(m_vecFrame.data(), sizeof(tAnimFrame), iFrameCount, pFile);
 
 	fclose(pFile);
@@ -165,10 +165,10 @@ void CAnimation::Load(const wstring& _strRelativePath)
 
 	assert(pFile);
 
-	//AnimationÀÇ ÀÌ¸§À» ÀĞ¾î¿Â´Ù.
+	//Animationì˜ ì´ë¦„ì„ ì½ì–´ì˜¨ë‹¤.
 	string str;
 	char szBuff[256] = {};
-	fScanf(szBuff, pFile);//ÇÊµå¸íÀÌ ÀĞÈû
+	fScanf(szBuff, pFile);//í•„ë“œëª…ì´ ì½í˜
 	fScanf(szBuff, pFile);
 	str = szBuff;
 	m_strName = wstring(str.begin(), str.end());

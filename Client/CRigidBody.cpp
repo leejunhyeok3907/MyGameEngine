@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CRigidBody.h"
 #include "CTimeManager.h"
 #include "CObject.h"
@@ -19,36 +19,36 @@ void CRigidBody::finalupdate()
 {
 	m_vForce;
 
-	//ÈûÀÇ Å©±â
+	//íž˜ì˜ í¬ê¸°
 	float fForce = m_vForce.Length();
 
-	//ÁÖ¾îÁø ÈûÀÌ ¾ø´Â »óÅÂ
+	//ì£¼ì–´ì§„ íž˜ì´ ì—†ëŠ” ìƒíƒœ
 	if (0.f != fForce)
 	{
-		//ÈûÀÇ ¹æÇâ
+		//íž˜ì˜ ë°©í–¥
 		m_vForce.Normalize();
 
-		//°¡¼ÓµµÀÇ Å©±â(ÈûÀÇ Å©±â/Áú·®)
+		//ê°€ì†ë„ì˜ í¬ê¸°(íž˜ì˜ í¬ê¸°/ì§ˆëŸ‰)
 		float m_fAccel = fForce / m_fMass;
 
-		//°¡¼Óµµ
+		//ê°€ì†ë„
 		m_vAccel = m_vForce * m_fAccel;
 	}
 
-	//ÈûÀÌ ÀÖµç ¾øµç°£¿¡ Ãß°¡ °¡¼Óµµ´Â Àû¿ëµÇ¾î¾ß ÇÔ
+	//íž˜ì´ ìžˆë“  ì—†ë“ ê°„ì— ì¶”ê°€ ê°€ì†ë„ëŠ” ì ìš©ë˜ì–´ì•¼ í•¨
 	m_vAccel += m_vAccel_A;
 
-	//¼Óµµ
+	//ì†ë„
 	m_vVelocity += m_vAccel * fDT;
 
-	// ¸¶Âû·Â¿¡ ÀÇÇÑ ¹Ý´ë¹æÇâÀ¸·ÎÀÇ °¡¼Óµµ
+	// ë§ˆì°°ë ¥ì— ì˜í•œ ë°˜ëŒ€ë°©í–¥ìœ¼ë¡œì˜ ê°€ì†ë„
 	if (!m_vVelocity.IsZero())
 	{
 		Vec2 vFricDir = -m_vVelocity;
 		Vec2 vFriction = vFricDir.Normalize() * m_fFrictionCoef * fDT;
 		if (m_vVelocity.Length() <= vFriction.Length())
 		{
-			//¸¶Âû °¡¼Óµµ°¡ º»·¡ ¼Óµµº¸´Ù ´õ Å« °æ¿ì
+			//ë§ˆì°° ê°€ì†ë„ê°€ ë³¸ëž˜ ì†ë„ë³´ë‹¤ ë” í° ê²½ìš°
 			m_vVelocity = Vec2(0.f, 0.f);
 		}
 		else
@@ -57,13 +57,13 @@ void CRigidBody::finalupdate()
 		}
 	}
 
-	// ¼Óµµ Á¦ÇÑ °Ë»ç
-	// ¾î´À ¹æÇâÀÌµç ÃÖ´ë ¼öÄ¡¸¦ ÀÌ¾ß±âÇÏ¹Ç·Î Àý´ë°ªÀ¸·Î °Ë»ç
+	// ì†ë„ ì œí•œ ê²€ì‚¬
+	// ì–´ëŠ ë°©í–¥ì´ë“  ìµœëŒ€ ìˆ˜ì¹˜ë¥¼ ì´ì•¼ê¸°í•˜ë¯€ë¡œ ì ˆëŒ€ê°’ìœ¼ë¡œ ê²€ì‚¬
 	if (abs(m_vMaxVelocity.x) < abs(m_vVelocity.x))
 	{
-		//ÀÚ½ÅÀ» Àý´ë°ªÀ¸·Î ³ª´­°æ¿ì ¹æÇâ¼º Á¤º¸¸¸ ³ª¿À°ÔµÊ(-1, 1)
+		//ìžì‹ ì„ ì ˆëŒ€ê°’ìœ¼ë¡œ ë‚˜ëˆŒê²½ìš° ë°©í–¥ì„± ì •ë³´ë§Œ ë‚˜ì˜¤ê²Œë¨(-1, 1)
 		m_vVelocity.x /= abs(m_vVelocity.x);
-		//¹æÇâ¼º Á¤º¸¿¡ ÃÖ´ë ¼Ó·Â Àû¿ë
+		//ë°©í–¥ì„± ì •ë³´ì— ìµœëŒ€ ì†ë ¥ ì ìš©
 		m_vVelocity.x *= m_vMaxVelocity.x;
 	}
 
@@ -73,25 +73,25 @@ void CRigidBody::finalupdate()
 		m_vVelocity.y *= m_vMaxVelocity.y;
 	}
 
-	//¼Óµµ¿¡ µû¸¥ ÀÌµ¿
+	//ì†ë„ì— ë”°ë¥¸ ì´ë™
 	Move();
 
-	//Èû ÃÊ±âÈ­
+	//íž˜ ì´ˆê¸°í™”
 	m_vForce = Vec2(0.f, 0.f);
 
-	//°¡¼Óµµ ÃÊ±âÈ­
+	//ê°€ì†ë„ ì´ˆê¸°í™”
 	m_vAccel = Vec2(0.f, 0.f);
 	m_vAccel_A = Vec2(0.f, 0.f);
 }
 
 void CRigidBody::Move()
 {
-	//ÀÌµ¿ ¼Ó·Â
+	//ì´ë™ ì†ë ¥
 	float fSpeed = m_vVelocity.Length();
 
 	if (0.f != fSpeed)
 	{
-		//ÀÌµ¿ ¹æÇâ
+		//ì´ë™ ë°©í–¥
 		Vec2 vDir = m_vVelocity;
 		vDir.Normalize();
 

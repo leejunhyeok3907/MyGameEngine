@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CObject;
 
@@ -7,15 +7,15 @@ class CRigidBody
 private:
 	CObject*	m_pOwner;
 
-	Vec2		m_vForce;	//Å©±â, ¹æÇâ
-	Vec2		m_vAccel;	//°¡¼Óµµ
-	Vec2		m_vAccel_A;	//Ãß°¡ °¡¼Óµµ
-	Vec2		m_vVelocity;//¼Óµµ(Å©±â: ¼Ó·Â, ¹æÇâ)
-	Vec2		m_vMaxVelocity;	//ÃÖ´ë ¼Ó·Â//(x¿Í yÀÇ Á¦ÇÑÀ» ´Ù¸£°Ô ÇÏ±âÀ§ÇØ ¹æÇâ¼º Á¤º¸°¡ Æ÷ÇÔµÈ VecÀ¸·Î)
+	Vec2		m_vForce;	//í¬ê¸°, ë°©í–¥
+	Vec2		m_vAccel;	//ê°€ì†ë„
+	Vec2		m_vAccel_A;	//ì¶”ê°€ ê°€ì†ë„
+	Vec2		m_vVelocity;//ì†ë„(í¬ê¸°: ì†ë ¥, ë°©í–¥)
+	Vec2		m_vMaxVelocity;	//ìµœëŒ€ ì†ë ¥//(xì™€ yì˜ ì œí•œì„ ë‹¤ë¥´ê²Œ í•˜ê¸°ìœ„í•´ ë°©í–¥ì„± ì •ë³´ê°€ í¬í•¨ëœ Vecìœ¼ë¡œ)
 
-	float		m_fMass;	//Áú·®
+	float		m_fMass;	//ì§ˆëŸ‰
 
-	float		m_fFrictionCoef; //¸¶Âû °è¼ö
+	float		m_fFrictionCoef; //ë§ˆì°° ê³„ìˆ˜
 
 
 	//F = M * A
@@ -25,7 +25,7 @@ public:
 	virtual void finalupdate();
 
 public:
-	//Èû ´©Àû
+	//í˜ ëˆ„ì 
 	void AddForce(Vec2 _vF) { m_vForce += _vF; }
 	void SetMass(float _fMass) { m_fMass = _fMass; }
 	float GetMass() { return m_fMass; }

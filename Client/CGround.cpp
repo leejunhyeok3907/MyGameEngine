@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CGround.h"
 #include "CCollider.h"
 #include "CGravity.h"
@@ -29,7 +29,7 @@ void CGround::OnCollisionEnter(CCollider* _pOther)
 	{
 		pOtherObj->GetGravity()->SetGround(true);
 
-		//Ãæµ¹Ã¼¿Í Ãæµ¹Ã¼°£ÀÇ Ãæµ¹
+		//ì¶©ëŒì²´ì™€ ì¶©ëŒì²´ê°„ì˜ ì¶©ëŒ
 		Vec2 vObjPos = _pOther->GetFinalPos();
 		Vec2 vObjScale = _pOther->GetScale();
 
@@ -55,7 +55,7 @@ void CGround::OnCollision(CCollider* _pOther)
 	{
 		pOtherObj->GetGravity()->SetGround(true);
 
-		//Ãæµ¹Ã¼¿Í Ãæµ¹Ã¼°£ÀÇ Ãæµ¹
+		//ì¶©ëŒì²´ì™€ ì¶©ëŒì²´ê°„ì˜ ì¶©ëŒ
 		Vec2 vObjPos = _pOther->GetFinalPos();
 		Vec2 vObjScale = _pOther->GetScale();
 

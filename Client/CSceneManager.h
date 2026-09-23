@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CScene;
 
@@ -7,8 +7,8 @@ class CSceneManager
 	SINGLE(CSceneManager)
 
 private:
-	CScene*		m_arrScene[(UINT)SCENE_TYPE::END];//¸ğµç SceneÀÇ ¸ñ·Ï
-	CScene*		m_pCurScene;//ÇöÀç Scene
+	CScene*		m_arrScene[(UINT)SCENE_TYPE::END];//ëª¨ë“  Sceneì˜ ëª©ë¡
+	CScene*		m_pCurScene;//í˜„ì¬ Scene
 
 
 public:

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CObject;
 class AI;
@@ -25,7 +25,7 @@ void Safe_Delete_Vec(vector<T>& _vec)
 template<typename T1, typename T2>
 void Safe_Delete_Map(map<T1, T2>& _map)
 {
-	//ÅÛÇÃ¸´ ÇÔ¼ö ³»¿¡¼­ EnumÅ¬·¡½º¸¦ ¾²·Á¸é typenameÀ» ºÙ¿©ÁÖ¾î¾ßÇÔ.(±âº» ¹®¹ı)
+	//í…œí”Œë¦¿ í•¨ìˆ˜ ë‚´ì—ì„œ Enumí´ë˜ìŠ¤ë¥¼ ì“°ë ¤ë©´ typenameì„ ë¶™ì—¬ì£¼ì–´ì•¼í•¨.(ê¸°ë³¸ ë¬¸ë²•)
 	typename map<T1, T2>::iterator iter = _map.begin();
 
 	for (; iter != _map.end(); iter++)

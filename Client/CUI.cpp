@@ -1,4 +1,4 @@
-#include "CUI.h"
+Ôªø#include "CUI.h"
 #include "CKeyManager.h"
 #include "SelectGDI.h"
 
@@ -10,11 +10,11 @@ CUI::CUI(bool _bCamAff)
 {
 }
 
-//±‚∫ª ∫πªÁ ª˝º∫¿⁄¥¬ ∫Œ∏¬ ¿« ∫πªÁª˝º∫¿⁄∏¶ ¿⁄µø¿∏∑Œ »£√‚«ÿ¡÷≥™
-//∫πªÁª˝º∫¿⁄∏¶ ¡˜¡¢ ±∏«ˆ«ÿπˆ∏Æ¥¬ º¯∞£ ∫Œ∏¬ ¿« ∫πªÁª˝º∫¿⁄∏¶ ¿⁄µø¿∏∑Œ »£√‚«ÿ¡÷¡ˆæ ¥¬¥Ÿ.
+//Í∏∞Î≥∏ Î≥µÏÇ¨ ÏÉùÏÑ±ÏûêÎäî Î∂ÄÎ™®Ï™ΩÏùò Î≥µÏÇ¨ÏÉùÏÑ±ÏûêÎ•º ÏûêÎèôÏúºÎ°ú Ìò∏Ï∂úÌï¥Ï£ºÎÇò
+//Î≥µÏÇ¨ÏÉùÏÑ±ÏûêÎ•º ÏßÅÏ†ë Íµ¨ÌòÑÌï¥Î≤ÑÎ¶¨Îäî ÏàúÍ∞Ñ Î∂ÄÎ™®Ï™ΩÏùò Î≥µÏÇ¨ÏÉùÏÑ±ÏûêÎ•º ÏûêÎèôÏúºÎ°ú Ìò∏Ï∂úÌï¥Ï£ºÏßÄÏïäÎäîÎã§.
 
 CUI::CUI(const CUI& _origin)
-	: CObject(_origin)//∏ÌΩ√∏¶ ¡§»Æ«œ∞‘ «ÿ¡÷æÓæﬂ«‘.
+	: CObject(_origin)//Î™ÖÏãúÎ•º Ï†ïÌôïÌïòÍ≤å Ìï¥Ï£ºÏñ¥ÏïºÌï®.
 	, m_pParentUI(nullptr)
 	, m_bCamAffected(_origin.m_bCamAffected)
 	, m_bMouseOn(false)
@@ -35,25 +35,25 @@ CUI::~CUI()
 
 void CUI::update()
 {
-	//∫Œ∏->¿⁄Ωƒ º¯º≠∑Œ ∞Ë√˛¿˚¿∏∑Œ ≥ª∑¡∞°∏Á æ˜µ•¿Ã∆Æ
+	//Î∂ÄÎ™®->ÏûêÏãù ÏàúÏÑúÎ°ú Í≥ÑÏ∏µÏ†ÅÏúºÎ°ú ÎÇ¥Î†§Í∞ÄÎ©∞ ÏóÖÎç∞Ïù¥Ìä∏
 
 	update_child();
 }
 
-void CUI::finalupdate()//¿⁄±‚¿⁄Ω≈¿« √÷¡æ ¿ßƒ°∏¶ ∞·¡§«‘
+void CUI::finalupdate()//ÏûêÍ∏∞ÏûêÏã†Ïùò ÏµúÏ¢Ö ÏúÑÏπòÎ•º Í≤∞Ï†ïÌï®
 {
 	CObject::finalupdate();
 
-	//UI¿« √÷¡æ ¡¬«•∏¶ ±∏«—¥Ÿ.
+	//UIÏùò ÏµúÏ¢Ö Ï¢åÌëúÎ•º Íµ¨ÌïúÎã§.
 	m_vFinalPos = GetPos();
 
-	if (GetParent())//∫Œ∏∞° ¿÷¥Ÿ∏È ∫Œ∏¿« ¿ßƒ°∑Œ∫Œ≈Õ offset¿ßƒ°
+	if (GetParent())//Î∂ÄÎ™®Í∞Ä ÏûàÎã§Î©¥ Î∂ÄÎ™®Ïùò ÏúÑÏπòÎ°úÎ∂ÄÌÑ∞ offsetÏúÑÏπò
 	{
 		Vec2 vParentPos = GetParent()->GetFinalPos();
 		m_vFinalPos += vParentPos;
 	}
 
-	//UI Mouse√º≈©
+	//UI MouseÏ≤¥ÌÅ¨
 	MouseOnCheck();
 
 	finalupdate_child();

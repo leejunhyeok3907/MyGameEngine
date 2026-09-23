@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 
-//½Ì±ÛÅæ ÆÐÅÏ
-//°´Ã¼ÀÇ »ý¼ºÀ» 1°³·Î Á¦ÇÑÇÔ
-//¾îµð¼­µç ½±°Ô Á¢±ÙÇØ¾ßÇÔ.
+//ì‹±ê¸€í†¤ íŒ¨í„´
+//ê°ì²´ì˜ ìƒì„±ì„ 1ê°œë¡œ ì œí•œí•¨
+//ì–´ë””ì„œë“  ì‰½ê²Œ ì ‘ê·¼í•´ì•¼í•¨.
 //class CCore
 //{
 //private:
@@ -11,13 +11,13 @@
 //public:
 //	static CCore* GetInstance()
 //	{
-//		//ÃÖÃÊ·Î È£ÃâµÈ °æ¿ì °´Ã¼¸¦ »ý¼ºÇÑ´Ù.
+//		//ìµœì´ˆë¡œ í˜¸ì¶œëœ ê²½ìš° ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
 //		if (g_pInst == nullptr)
 //		{
 //			g_pInst = new CCore;
 //		}
 //
-//		//ÀÌÈÄÀÇ È£Ãâ½Ã
+//		//ì´í›„ì˜ í˜¸ì¶œì‹œ
 //		return g_pInst;
 //	}
 //
@@ -43,17 +43,17 @@ class CCore
 	SINGLE(CCore);
 
 private:
-	HWND	m_hWnd;				//¸ÞÀÎ À©µµ¿ì ÇÚµé
-	POINT	m_ptResolution;		//¸ÞÀÎ À©µµ¿ì ÇØ»óµµ
-	HDC		m_hDC;				//¸ÞÀÎ À©µµ¿ì¿¡ DrawÇÒ DC
+	HWND	m_hWnd;				//ë©”ì¸ ìœˆë„ìš° í•¸ë“¤
+	POINT	m_ptResolution;		//ë©”ì¸ ìœˆë„ìš° í•´ìƒë„
+	HDC		m_hDC;				//ë©”ì¸ ìœˆë„ìš°ì— Drawí•  DC
 
-	CTexture* m_pMenTex;		// ¹é¹öÆÛ ÅØ½ºÃÄ
+	CTexture* m_pMenTex;		// ë°±ë²„í¼ í…ìŠ¤ì³
 
-	//ÀÚÁÖ »ç¿ëÇÒ GDI Object
+	//ìžì£¼ ì‚¬ìš©í•  GDI Object
 	HBRUSH	m_arrBrush[(UINT)BRUSH_TYPE::END];
 	HPEN	m_arrPen[(UINT)PEN_TYPE::END];
 
-	HMENU	m_hMenu; // tool Scene¿¡¼­¸¸ »ç¿ë
+	HMENU	m_hMenu; // tool Sceneì—ì„œë§Œ ì‚¬ìš©
 
 
 public:

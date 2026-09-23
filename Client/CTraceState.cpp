@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CTraceState.h"
 
 #include "CSceneManager.h"
@@ -24,7 +24,7 @@ void CTraceState::Enter()
 
 void CTraceState::update()
 {
-	//Player�� ��ġ üũ
+	//Player의 위치 체크
 	CPlayer* pPlayer = (CPlayer*)CSceneManager::GetInst()->GetCurScene()->GetPlayer();
 	Vec2 vPlayerPos = pPlayer->GetPos();
 

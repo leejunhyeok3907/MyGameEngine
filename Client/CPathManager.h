@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 class CPathManager
 {
 	SINGLE(CPathManager)
@@ -11,7 +11,7 @@ public:
 	void init();
 	const wchar_t* GetContentPath() { return m_szContentPath; }
 
-	//°æ·Î¸¦ ¹ŞÀ¸¸é Àı´ë°æ·Î·Î °¡´Â ÆÄÆ®¸¦ ÀÚ¸£°í »ó´ë°æ·Î¸¸ µÇµ¹·ÁÁÖ´Â ÇÔ¼ö
+	//ê²½ë¡œë¥¼ ë°›ìœ¼ë©´ ì ˆëŒ€ê²½ë¡œë¡œ ê°€ëŠ” íŒŒíŠ¸ë¥¼ ìë¥´ê³  ìƒëŒ€ê²½ë¡œë§Œ ë˜ëŒë ¤ì£¼ëŠ” í•¨ìˆ˜
 	wstring GetRelativePath(const wchar_t* _filepath);
 };
 

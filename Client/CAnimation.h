@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 
 class CAnimator;
@@ -17,12 +17,12 @@ class CAnimation
 private:
 	wstring	m_strName;
 	CAnimator* m_pAnimator;
-	CTexture* m_pTex;					//AnimationÀÌ »ç¿ëÇÏ´Â ÅØ½ºÃÄ
-	vector<tAnimFrame> m_vecFrame;		//¸ğµç ÇÁ·¹ÀÓ Á¤º¸
-	int	m_iCurFrame;					//ÇöÀç ÇÁ·¹ÀÓ ¹øÈ£
-	float m_fAccTime;					//½Ã°£ ´©Àû
+	CTexture* m_pTex;					//Animationì´ ì‚¬ìš©í•˜ëŠ” í…ìŠ¤ì³
+	vector<tAnimFrame> m_vecFrame;		//ëª¨ë“  í”„ë ˆì„ ì •ë³´
+	int	m_iCurFrame;					//í˜„ì¬ í”„ë ˆì„ ë²ˆí˜¸
+	float m_fAccTime;					//ì‹œê°„ ëˆ„ì 
 
-	bool m_bFinish;						//Animation Àç»ı ¿©ºÎ
+	bool m_bFinish;						//Animation ì¬ìƒ ì—¬ë¶€
 
 private:
 	void SetName(const wstring& _strName) { m_strName = _strName; }

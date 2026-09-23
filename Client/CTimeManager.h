@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 class CTimeManager
 {
 	SINGLE(CTimeManager)
@@ -8,13 +8,13 @@ private:
 	LARGE_INTEGER	m_llPrevCount;
 	LARGE_INTEGER	m_llFrequency;
 
-	double			m_dDeltaTime;	//ÇÁ·¹ÀÓ »çÀÌÀÇ ½Ã°£°ª
-	double			m_dAcc;			//1ÃÊ Ã¼Å©¸¦ À§ÇÑ ´©Àû ½Ã°£
-	UINT			m_iCallCount;	//ÇÔ¼ö È£Ãâ È½¼ö
-	UINT			m_iFPS;			//ÃÊ´ç È£Ãâ È½¼ö
+	double			m_dDeltaTime;	//í”„ë ˆì„ ì‚¬ì´ì˜ ì‹œê°„ê°’
+	double			m_dAcc;			//1ì´ˆ ì²´í¬ë¥¼ ìœ„í•œ ëˆ„ì  ì‹œê°„
+	UINT			m_iCallCount;	//í•¨ìˆ˜ í˜¸ì¶œ íšŸìˆ˜
+	UINT			m_iFPS;			//ì´ˆë‹¹ í˜¸ì¶œ íšŸìˆ˜
 
 	//FPS (Frame Per Second)
-	//1ÇÁ·¹ÀÓ´ç ½Ã°£ (Delta Time)
+	//1í”„ë ˆì„ë‹¹ ì‹œê°„ (Delta Time)
 
 public:
 	void init();

@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CUIManager.h"
 
 #include "CSceneManager.h"
@@ -19,7 +19,7 @@ CUIManager::~CUIManager()
 
 void CUIManager::update()
 {
-	//Focused UI È®ÀÎ
+	//Focused UI í™•ì¸
 	m_pFocusedUI = GetFocusedUI();
 
 	if (!m_pFocusedUI) return;
@@ -27,7 +27,7 @@ void CUIManager::update()
 	bool b_LButtonTap = KEY_TAP(KEY::LBUTTON);
 	bool b_LButtonAway = KEY_AWAY(KEY::LBUTTON);
 
-	// Forcued UI³»¿¡¼­, ºÎ¸ğ UI Æ÷ÇÔ, ÀÚ½Ä UIµé Áß ½ÇÁ¦ Å¸°ÙÆÃ µÈ UI¸¦ °¡Á®¿Â´Ù.
+	// Forcued UIë‚´ì—ì„œ, ë¶€ëª¨ UI í¬í•¨, ìì‹ UIë“¤ ì¤‘ ì‹¤ì œ íƒ€ê²ŸíŒ… ëœ UIë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	CUI* pTargetUI = GetTargetedUI(m_pFocusedUI);
 
 	if (nullptr != pTargetUI)
@@ -48,7 +48,7 @@ void CUIManager::update()
 				pTargetUI->MouseLbtnClicked();
 			}
 
-			//¿ŞÂÊ ¹öÆ° ¶¼¸é, ´­·È´ø Ã¼Å©¸¦ ´Ù½Ã ÇØÁ¦
+			//ì™¼ìª½ ë²„íŠ¼ ë–¼ë©´, ëˆŒë ¸ë˜ ì²´í¬ë¥¼ ë‹¤ì‹œ í•´ì œ
 			pTargetUI->m_bLbtnDown = false;
 		}
 	}
@@ -56,7 +56,7 @@ void CUIManager::update()
 
 void CUIManager::SetTargetedUI(CUI* _pUI)
 {
-	//ÀÌ¹Ì Æ÷Ä¿½Ì ÁßÀÎ °æ¿ì or Æ÷Ä¿½Ì ÇØÁ¦ ¿äÃ»ÀÎ °æ¿ì
+	//ì´ë¯¸ í¬ì»¤ì‹± ì¤‘ì¸ ê²½ìš° or í¬ì»¤ì‹± í•´ì œ ìš”ì²­ì¸ ê²½ìš°
 	if (m_pFocusedUI == _pUI || nullptr == _pUI)
 	{
 		m_pFocusedUI = _pUI;
@@ -78,7 +78,7 @@ void CUIManager::SetTargetedUI(CUI* _pUI)
 		}
 	}
 
-	//º¤ÅÍ ³»¿¡¼­ ¸Ç µÚ·Î ¼ø¹ø ±³Ã¼
+	//ë²¡í„° ë‚´ì—ì„œ ë§¨ ë’¤ë¡œ ìˆœë²ˆ êµì²´
 	vecUI.erase(iter);
 	vecUI.push_back(m_pFocusedUI);
 }
@@ -90,30 +90,30 @@ CUI* CUIManager::GetTargetedUI(CUI* _pParentUI)
 
 	CUI* pTargetUI = nullptr;
 
-	//1.ºÎ¸ğ UIÆ÷ÇÔ, ¸ğµç ÀÚ½ÄµéÀ» °Ë»çÇØ¾ß ÇÑ´Ù.
+	//1.ë¶€ëª¨ UIí¬í•¨, ëª¨ë“  ìì‹ë“¤ì„ ê²€ì‚¬í•´ì•¼ í•œë‹¤.
 
-	//ÇÔ¼ö È£ÃâÇÒ¶§¸¶´Ù Áö¿ª°´Ã¼·Î »ı¼ºÇÏ´Â°Íº¸´Ù Á¤Àû°´Ã¼·Î µÒ
+	//í•¨ìˆ˜ í˜¸ì¶œí• ë•Œë§ˆë‹¤ ì§€ì—­ê°ì²´ë¡œ ìƒì„±í•˜ëŠ”ê²ƒë³´ë‹¤ ì •ì ê°ì²´ë¡œ ë‘ 
 	static list<CUI*> queue;
 	static vector<CUI*> vecNoneTarget;
 
-	//È¤½Ã ¸ğ¸¦ µ¥ÀÌÅÍ°¡ µé¾îÀÖÀ»°æ¿ì¸¦ ´ëºñÇØ ÃÊ±âÈ­
+	//í˜¹ì‹œ ëª¨ë¥¼ ë°ì´í„°ê°€ ë“¤ì–´ìˆì„ê²½ìš°ë¥¼ ëŒ€ë¹„í•´ ì´ˆê¸°í™”
 	queue.clear();
 	vecNoneTarget.clear();
 
 	queue.push_back(_pParentUI);
 
 
-	//2.Å¸°Ù UIµéÁß, ´õ ¿ì¼±¼øÀ§°¡ ³ôÀº ±âÁØÀº ´õ ³·Àº °èÃşÀÇ ÀÚ½Ä UI
+	//2.íƒ€ê²Ÿ UIë“¤ì¤‘, ë” ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ê¸°ì¤€ì€ ë” ë‚®ì€ ê³„ì¸µì˜ ìì‹ UI
 	while (!queue.empty())
 	{
 		CUI* pUI = queue.front();
 		queue.pop_front();
 
-		//Å¥¿¡¼­ ²¨³»¿Â UI°¡ TargetUIÀÎÁö È®ÀÎ
-		//Å¸°Ù UIµé Áß ´õ ¿ì¼±¼øÀ§°¡ ³ôÀº ±âÁØÀº ´õ ³·Àº °èÃşÀÇ ÀÚ½Ä UI
+		//íì—ì„œ êº¼ë‚´ì˜¨ UIê°€ TargetUIì¸ì§€ í™•ì¸
+		//íƒ€ê²Ÿ UIë“¤ ì¤‘ ë” ìš°ì„ ìˆœìœ„ê°€ ë†’ì€ ê¸°ì¤€ì€ ë” ë‚®ì€ ê³„ì¸µì˜ ìì‹ UI
 		if (pUI->IsMouseOn())
 		{
-			//ptargetUI°¡ ±³Ã¼µÇ´Â°æ¿ì
+			//ptargetUIê°€ êµì²´ë˜ëŠ”ê²½ìš°
 			if (nullptr != pTargetUI)
 			{
 				vecNoneTarget.push_back(pTargetUI);
@@ -127,7 +127,7 @@ CUI* CUIManager::GetTargetedUI(CUI* _pParentUI)
 			vecNoneTarget.push_back(pUI);
 		}
 
-		//¿ŞÂÊ ¹öÆ° ¶¼¸é, ´­·È´ø Ã¼Å©¸¦ ´Ù½Ã ÇØÁ¦
+		//ì™¼ìª½ ë²„íŠ¼ ë–¼ë©´, ëˆŒë ¸ë˜ ì²´í¬ë¥¼ ë‹¤ì‹œ í•´ì œ
 		if (b_LButtonAway)
 		{
 			for (size_t i = 0; i < vecNoneTarget.size(); i++)
@@ -154,10 +154,10 @@ CUI* CUIManager::GetFocusedUI()
 
 	bool b_LButtonTap = KEY_TAP(KEY::LBUTTON);
 
-	//±âÁ¸ Æ÷Ä¿½Ì UI¸¦ ¹Ş¾ÆµÎ°í º¯°æµÇ¾ú´ÂÁö È®ÀÎ
+	//ê¸°ì¡´ í¬ì»¤ì‹± UIë¥¼ ë°›ì•„ë‘ê³  ë³€ê²½ë˜ì—ˆëŠ”ì§€ í™•ì¸
 	CUI* pFocusedUI = m_pFocusedUI;
 
-	//¿ŞÂÊ Å¬¸¯ÀÌ ¹ß»ıÇÏÁö¾Ê¾ÒÀ¸¸é Æ÷Ä¿½Ì ÀüÈ¯ÀÌ ¹ß»ıÇÒ ÀÌÀ¯°¡ ¾øÀ½.
+	//ì™¼ìª½ í´ë¦­ì´ ë°œìƒí•˜ì§€ì•Šì•˜ìœ¼ë©´ í¬ì»¤ì‹± ì „í™˜ì´ ë°œìƒí•  ì´ìœ ê°€ ì—†ìŒ.
 	if (b_LButtonTap)
 	{
 		vector<CObject*>::iterator target_iter = vecUI.end();
@@ -165,23 +165,23 @@ CUI* CUIManager::GetFocusedUI()
 
 		for (; iter!=vecUI.end(); iter++)
 		{
-			//Á¶°Ç¿¡ ¸ÂÀ»°æ¿ì °è¼Ó ±³Ã¼
+			//ì¡°ê±´ì— ë§ì„ê²½ìš° ê³„ì† êµì²´
 			if (((CUI*)*iter)->IsMouseOn())
 			{
 				target_iter = iter;
 			}
 		}
 
-		//¸ğµç UI°¡ Æ÷Ä¿½ÌµÇÁö ¾ÊÀ½.
+		//ëª¨ë“  UIê°€ í¬ì»¤ì‹±ë˜ì§€ ì•ŠìŒ.
 		if (vecUI.end() == target_iter)
 		{
 			return nullptr;
 		}
 
-		//ÃÖÁ¾ÀûÀ¸·Î target_iter°¡ °¡Áö°íÀÖ´Â µ¥ÀÌÅÍ°¡ Å¬¸¯µÈ UI
+		//ìµœì¢…ì ìœ¼ë¡œ target_iterê°€ ê°€ì§€ê³ ìˆëŠ” ë°ì´í„°ê°€ í´ë¦­ëœ UI
 		pFocusedUI = (CUI*)(*target_iter);
 
-		//vector ³»¿¡¼­ ¸Ç µÚ·Î ¼ø¹ø ±³Ã¼
+		//vector ë‚´ì—ì„œ ë§¨ ë’¤ë¡œ ìˆœë²ˆ êµì²´
 		vecUI.erase(target_iter);
 		vecUI.push_back(pFocusedUI);
 	}

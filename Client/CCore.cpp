@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "CCore.h"
 #include "CObject.h"
 #include "CTimeManager.h"
@@ -51,18 +51,18 @@ int CCore::init(HWND _hWnd, POINT _ptResolution)
 
 	ChangeWindowSize(Vec2((float)_ptResolution.x, (float)_ptResolution.y), false);
 
-	//�޴��� ����
+	//메뉴바 생성
 	m_hMenu = LoadMenu(nullptr, MAKEINTRESOURCEW(IDC_CLIENT));
 
 
 	m_hDC = GetDC(m_hWnd);
-	//���� ���۸� �뵵�� �ؽ��� ������ �����.
+	//더블 버퍼링 용도의 텍스쳐 한장을 만든다.
 	m_pMenTex = CResourceManager::GetInst()->CreateTexture(L"BackBuffer", (UINT)m_ptResolution.x, (UINT)m_ptResolution.y);	
 
-	//���� ����� �귯�� �� �� ����
+	//자주 사용할 브러쉬 및 펜 생성
 	CreateBrushPen();
 
-	//Manager�ʱ�ȭ
+	//Manager초기화
 	CPathManager::GetInst()->init();
 	CTimeManager::GetInst()->init();
 	CKeyManager::GetInst()->init();
@@ -96,24 +96,24 @@ void CCore::Progress()
 	// ==============
 	CSceneManager::GetInst()->update();
 
-	//�浹 üũ
+	//충돌 체크
 	CCollisionManager::GetInst()->update();
 
-	//UI �̺�Ʈ üũ
+	//UI 이벤트 체크
 	CUIManager::GetInst()->update();
 	
 
 	//=========
 	//Rendering
 	//=========
-	//ȭ�� Clear
+	//화면 Clear
 
 	Clear();
 
 	CSceneManager::GetInst()->render(m_pMenTex->GetDC());
 	CCamera::GetInst()->render(m_pMenTex->GetDC());
 
-	//���� ���۸�. m_memDC�� �ϼ��� DC�� ����DC�� �ű�.
+	//더블 버퍼링. m_memDC에 완성된 DC를 메인DC로 옮김.
 	BitBlt(m_hDC, 0, 0, m_ptResolution.x, m_ptResolution.y,
 		m_pMenTex->GetDC(), 0, 0, SRCCOPY);
 
@@ -121,7 +121,7 @@ void CCore::Progress()
 	CTimeManager::GetInst()->render();
 
 	// ===============
-	//�̺�Ʈ ����ó��
+	//이벤트 지연처리
 	// ===============
 	CEventManager::GetInst()->update();
 }
@@ -158,10 +158,10 @@ void CCore::DiviedMenu()
 
 void CCore::ChangeWindowSize(Vec2 _vResolution, bool _bMenu)
 {
-	//�ػ󵵿� �°� ������ ũ�� ����
+	//해상도에 맞게 윈도우 크기 조정
 	RECT rt = { 0, 0, (long)_vResolution.x, (long)_vResolution.y};
-	//���ϰ��� �������� �޸𸮿� ��ܼ� ��ȯ�Ǵµ�
-	//�ʹ� ū ����ü�� ��� �ǵ����ٰ�� �������ϰ� �����.
+	//리턴값은 레지스터 메모리에 담겨서 반환되는데
+	//너무 큰 구조체에 담아 되돌려줄경우 성능저하가 우려됨.
 	AdjustWindowRect(&rt, WS_OVERLAPPEDWINDOW, _bMenu);
 
 	SetWindowPos(m_hWnd, nullptr, 100, 100, rt.right - rt.left, rt.bottom - rt.top, 0);
